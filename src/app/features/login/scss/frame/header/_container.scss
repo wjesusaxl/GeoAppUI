@@ -1,0 +1,9 @@
+login-frame header{
+    display: grid;
+    grid-template-columns: auto;    
+    height: 15vh;
+    svg.bar{
+        display: grid;
+        color: map-get($color, orange);
+    }
+}

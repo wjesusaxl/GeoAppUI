@@ -1,0 +1,9 @@
+login-frame{
+    div.title{
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0 $frame-margin;
+        margin-bottom: 3rem;
+        grid-row-gap: 1rem;
+    }
+}

@@ -1,0 +1,28 @@
+login-frame{
+    div.logo{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 4rem;
+        transform: translate(-20%, -50%);
+        display: grid;
+        grid-template-columns: auto;        
+        background: map-get($color, gray1);
+        svg{
+            display: block;
+            height: 10vh;
+            margin: .125rem auto;
+            polygon{
+                stroke: map-get($color, orange);
+            }
+            path{
+                &.icon{
+                    fill: #FFF;
+                }
+                &.letter{
+                    fill: #FFF;
+                }
+            }
+        }
+    }
+}

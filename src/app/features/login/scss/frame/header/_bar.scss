@@ -1,0 +1,11 @@
+login-frame{
+    div.bar{
+        display: grid;
+        grid-template-columns: auto;
+        align-items: center;
+        svg{
+            display: block;
+            fill: map-get($color, orange);
+        }
+    }
+}
