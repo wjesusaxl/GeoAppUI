@@ -1,9 +1,9 @@
 login-frame{
-    div.title{
+    section.title{
         display: grid;
         grid-template-columns: auto;
         margin: 0 $frame-margin;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         grid-row-gap: 1rem;
     }
 }

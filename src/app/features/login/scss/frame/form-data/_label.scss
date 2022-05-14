@@ -1,0 +1,13 @@
+app-form-data div.form-field-list app-form-field label{
+    display: block;
+    position: absolute;
+    color: map-get($color, orange);
+    -webkit-text-fill-color: map-get($color, orange);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    top: 50%;
+		left: 50%;
+    transform: translate(-10%, 0%);
+}

@@ -1,0 +1,29 @@
+app-form-data div.form-field-list app-form-field input{
+    display: block;
+    width: 100%;
+    z-index: 1;
+    border: none;
+		background: rgba(255, 255, 255, 0);
+    color: map-get($color, gray1);
+    -webkit-text-fill-color: map-get($color, gray1);
+    text-align: center;
+    outline:none;
+    font-size: 1rem;
+    &:active{
+      border: none;
+      outline:none;
+    }
+    &::-webkit-input-placeholder{
+      transition: all .5s ease-in-out;
+      color: map-get($color, gray2);
+      -webkit-text-fill-color: map-get($color, gray2);
+    }
+    &:not(:placeholder-shown) + label{
+      top: -2rem;
+      left: 0;
+      font-size: 14px;
+      transform: translate(0, 0);
+      transition: all .3s ease-in-out;
+      opacity: 1;
+    }
+}

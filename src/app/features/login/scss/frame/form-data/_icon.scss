@@ -1,0 +1,16 @@
+app-form-data div.form-field-list app-form-field{
+    div.icon{
+        display: grid;
+        width: fit-content;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(5px, calc(-55% - 2px));
+        svg.username{
+          display: block;
+          fill: map-get($color, gray2);
+          height: 1.5rem;
+          width: fit-content;
+        }
+    }
+}
