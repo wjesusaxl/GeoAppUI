@@ -1,4 +1,23 @@
-<div class="form-field-list" *ngIf="formFieldList.length > 0">
-  <app-form-field [formField]="formField" *ngFor="let formField of formFieldList">    
-  </app-form-field>
+<form [formGroup]="fgroup" (ngSubmit)="onSubmit(fgroup.value)">
+  <div class="form-field-list" *ngIf="formFieldList.length > 0">
+    <app-form-field [formField]="formField" [fgroup]="fgroup" *ngFor="let formField of formFieldList">    
+    </app-form-field>
+  </div>
+  <div class="button-list" *ngIf="buttonList" [formGroup]="fgroup">
+    <app-button [button]="button" *ngFor="let button of buttonList" [callbackFunction]="onSubmit"></app-button>
+  </div>
+</form>
+
+<!-- <form [formGroup]="fgroup">
+  <div>
+  <input type="text" formControlName="username">
 </div>
+<div class="icon">
+</div>
+<div class="form-field-wrapper">
+    <input type="text" formControlName="username" autocomplete="off" autofocus placeholder="username" spellcheck='false' autocorrect='off'/>
+    <label for="username">username</label>
+</div>
+</form> -->
+
+<!-- <pre>{{formXXX | json}}</pre> -->

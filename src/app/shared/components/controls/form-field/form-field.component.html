@@ -1,6 +1,6 @@
 <div class="icon {{formField.icon.class}}" [innerHTML]="formField.safeContent">
 </div>
-<div class="form-field-wrapper">
-    <input type="text" name="{{formField.name}}" *ngIf="formField.type === 1" autocomplete="off" autofocus placeholder="{{formField.name}}" spellcheck='false' autocorrect='off'/>
+<div class="form-field-wrapper" [formGroup]="fgroup">
+    <input type="text" formControlName="{{formField.name}}" *ngIf="formField.type === 1" autocomplete="off" autofocus placeholder="{{formField.name}}" spellcheck='false' autocorrect='off'/>
     <label for="{{formField.name}}">{{formField.label}}</label>
 </div>

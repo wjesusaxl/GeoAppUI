@@ -1,0 +1,7 @@
+app-form-data div.button-list app-button button {
+  display: grid;
+  grid-template-columns: auto;
+  span{
+    display: block;
+  }
+}

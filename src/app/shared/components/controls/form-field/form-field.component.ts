@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, Output, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormField } from 'src/app/shared/models/form-field';
 
 @Component({
@@ -10,6 +11,8 @@ import { FormField } from 'src/app/shared/models/form-field';
 export class FormFieldComponent implements OnInit {
 
   @Input() formField:FormField;
+  @Input() fgroup:FormGroup;
+  // @Input() formFieldControlName:string;
   constructor() { }
 
   ngOnInit(): void {

@@ -1,0 +1,9 @@
+app-form-data{
+  display: grid;
+  grid-template-columns: auto;
+  form{
+    display: grid;
+    grid-row-gap: 2rem;
+  padding-bottom: 1rem;
+  }
+}

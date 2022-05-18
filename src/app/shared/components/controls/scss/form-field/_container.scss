@@ -1,4 +1,10 @@
-app-form-data{
-  display: grid;
-  grid-template-columns: auto;
+div.form-field-list{
+  app-form-data{
+    display: grid;
+    grid-template-columns: auto;
+    form{
+      display: grid;
+      grid-template-columns: auto;
+    }
+  }
 }

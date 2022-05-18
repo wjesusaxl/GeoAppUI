@@ -3,14 +3,14 @@ login-frame{
         position: absolute;
         top: 50%;
         right: 0;
-        width: 4rem;
+        width: 4vw;
         transform: translate(-20%, -50%);
         display: grid;
-        grid-template-columns: auto;        
+        grid-template-columns: auto;
         background: map-get($color, gray1);
         svg{
             display: block;
-            height: 10vh;
+            max-height: 10vh;
             margin: .125rem auto;
             polygon{
                 stroke: map-get($color, orange);

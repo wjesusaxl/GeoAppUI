@@ -1,0 +1,54 @@
+app-form-data div.button-list app-button {
+  button.continue {
+    background: map-get($color, orange);
+    border: none;
+    margin-left: auto;
+    margin-right: $frame-margin;
+    padding: .25rem;
+    align-items: center;
+    margin-left: auto;
+    padding: .5rem 2.5rem;
+    width: fit-content;
+    span {
+      position: relative;
+      z-index: 2;
+      font-size: 1.125rem;
+      font-weight: 200;
+      color: #FFF;
+      -webkit-text-fill-color: #FFF;
+    }
+    div.button-icon.continue {
+      position: absolute;
+      top: 50%;
+      right: .5rem;
+      transform: translate(0, -50%);
+      svg {
+        height: 1.25rem;
+        fill: white;
+        margin-left: auto;
+      }
+    }
+    .transition{
+      transition: all .5s ease-in-out;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      transform: scale(0, 1);
+      transform-origin: left;
+    }
+    &:hover{
+      .transition{
+        transition: all .5s ease-in-out;
+        transform: scale(1, 1);
+        background: rgba(0, 0, 0, .1);
+      }
+      transition: all .3s ease-in-out;
+    }
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
