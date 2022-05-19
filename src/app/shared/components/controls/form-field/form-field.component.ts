@@ -12,10 +12,12 @@ export class FormFieldComponent implements OnInit {
 
   @Input() formField:FormField;
   @Input() fgroup:FormGroup;
-  // @Input() formFieldControlName:string;
+  @Input() showValMessage:boolean;
+  public validationMessage:string;
+  
   constructor() { }
 
   ngOnInit(): void {
+    this.validationMessage = this.formField.fieldValidator.errorMessage;
   }
-
 }

@@ -16,7 +16,8 @@
         "min": 3,
         "max": 30,
         "required": true,
-        "minLength": 3
+        "minLength": 3,
+        "errorMessage": "Enter a valid username value."
       }
     }]
   },

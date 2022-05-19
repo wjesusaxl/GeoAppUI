@@ -1,0 +1,32 @@
+app-form-data div.button-list app-button {
+    button.continue {
+      .transition{
+        transition: all .5s ease-in-out;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transform: scale(0, 1);
+        transform-origin: left;
+      }
+    //   &:not(:disabled):hover{
+    //     .transition{
+    //       transition: all .5s ease-in-out;
+    //       transform: scale(1, 1);
+    //       background: rgba(0, 0, 0, .1);
+    //     }
+    //     transition: all .3s ease-in-out;
+    //   }
+      &:hover{
+        .transition{
+          transition: all .5s ease-in-out;
+          transform: scale(1, 1);
+          background: rgba(0, 0, 0, .1);
+        }
+        transition: all .3s ease-in-out;
+      }
+    }
+  }
+  

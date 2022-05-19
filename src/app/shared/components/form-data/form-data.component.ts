@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit, Output, ViewEncapsulation, EventEmitter } from '@angular/core';
 import { FormData } from '../../models/form-data';
 import { FormField } from '../../models/form-field';
 import { Button } from '../../models/button';
@@ -16,12 +16,14 @@ import { ControlContainer, FormControl, FormGroup, FormGroupDirective, NG_VALUE_
 export class FormDataComponent implements OnInit {
 
   public formFieldList: FormField[] = [] as FormField[];
-  public buttonList: Button[] = [] as Button[];
+  public buttonList: Button[] = [] as Button[];  
 
   @Input() formData: FormData;
+  @Output() formEvent = new EventEmitter<any>();
+  @Input() parentCallbackFunction:(args:any)=> void;
   fgroup : FormGroup;
+  showValMessage:boolean;
 
-  
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
@@ -68,6 +70,21 @@ export class FormDataComponent implements OnInit {
   }
 
   onSubmit(form:any){
-    console.log(form);
+    // if(this.fgroup.valid){
+    //   console.log(form);
+    // }else{
+    //   console.log("error");
+    // }
   }
+
+  GetFormContent(){
+    let data:any = {};
+    this.showValMessage = !this.fgroup.valid;
+    if(this.fgroup.valid){
+      data = this.fgroup.value;
+    }
+    // this.formEvent.emit(data);
+    this.parentCallbackFunction(this.fgroup.value);
+  }
+
 }

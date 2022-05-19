@@ -1,11 +1,14 @@
-app-form-data div.form-field-list app-form-field{
+app-form-data div.form-field-list app-form-field div.form-field-wrapper{
     div.icon{
         display: grid;
         width: fit-content;
         position: absolute;
         top: 50%;
         left: 0;
-        transform: translate(5px, calc(-55% - 2px));
+        background: #FFF;
+        z-index: 2;
+        // transform: translate(5px, calc(-55% - 2px));
+        transform: translate(5px, -50%);
         svg.username{
           display: block;
           fill: map-get($color, gray2);

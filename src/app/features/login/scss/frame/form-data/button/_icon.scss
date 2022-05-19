@@ -1,0 +1,16 @@
+app-form-data div.button-list app-button {
+    button.continue {
+      div.button-icon.continue {
+        position: absolute;
+        top: 50%;
+        right: .5rem;
+        transform: translate(0, -50%);
+        svg {
+          height: 1.25rem;
+          fill: white;
+          margin-left: auto;
+        }
+      }
+    }
+  }
+  

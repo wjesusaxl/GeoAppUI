@@ -1,23 +1,32 @@
-<form [formGroup]="fgroup" (ngSubmit)="onSubmit(fgroup.value)">
+<form 
+  [formGroup]="fgroup" 
+  (ngSubmit)="onSubmit(fgroup.value)">
   <div class="form-field-list" *ngIf="formFieldList.length > 0">
-    <app-form-field [formField]="formField" [fgroup]="fgroup" *ngFor="let formField of formFieldList">    
+    <app-form-field 
+      [formField]="formField" 
+      [fgroup]="fgroup" 
+      *ngFor="let formField of formFieldList"
+      [showValMessage] = "showValMessage"
+    >
     </app-form-field>
   </div>
   <div class="button-list" *ngIf="buttonList" [formGroup]="fgroup">
-    <app-button [button]="button" *ngFor="let button of buttonList" [callbackFunction]="onSubmit"></app-button>
+    <app-button 
+      [button]="button" 
+      *ngFor="let button of buttonList" 
+      [callbackFunction]="onSubmit"
+      [formValid]="fgroup.valid"
+      (click)="GetFormContent()"
+    >
+    </app-button>
   </div>
 </form>
 
-<!-- <form [formGroup]="fgroup">
-  <div>
-  <input type="text" formControlName="username">
-</div>
-<div class="icon">
-</div>
-<div class="form-field-wrapper">
-    <input type="text" formControlName="username" autocomplete="off" autofocus placeholder="username" spellcheck='false' autocorrect='off'/>
-    <label for="username">username</label>
-</div>
-</form> -->
-
-<!-- <pre>{{formXXX | json}}</pre> -->
+<!-- <app-button 
+[button]="button" 
+*ngFor="let button of buttonList" 
+[callbackFunction]="onSubmit"
+[formValid]="fgroup.valid"
+(extEvent)="showValMessage=$event"
+>
+</app-button> -->

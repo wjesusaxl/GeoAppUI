@@ -3,4 +3,5 @@ export interface FieldValidator{
     max: number;
     required: boolean;
     minLength: number;
+    errorMessage: string;
 }

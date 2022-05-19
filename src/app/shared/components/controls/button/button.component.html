@@ -1,6 +1,13 @@
-<button class="{{button.class}}" title="{{button.title}}" >
+<button 
+    class="{{button.class}}" 
+    title="{{button.title}}"    
+>
     <span>{{button.label}}</span>
-    <div class="button-icon {{button.icon!.class}}" [innerHTML]="button.safeContent">
+    <div 
+        class="button-icon 
+        {{button.icon!.class}}" 
+        [innerHTML]="button.safeContent"
+    >
     </div>    
     <div class="transition"></div>
 </button>

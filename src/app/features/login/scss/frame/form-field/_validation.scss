@@ -1,0 +1,11 @@
+app-form-data div.form-field-list app-form-field div.validation{
+  display: grid;
+  grid-template-columns: auto;
+  align-items: center;
+  min-height: 2rem;
+  span{
+    display: block;
+    color: map-get($color, orange);
+    margin: 0 auto;
+  }
+}

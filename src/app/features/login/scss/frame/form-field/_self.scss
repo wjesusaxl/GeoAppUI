@@ -3,10 +3,7 @@ app-form-data div.form-field-list app-form-field{
   margin: .25rem $frame-margin;
   padding: .25rem;
   width: fit-content;
-  border-bottom: solid 1px map-get($color, orange);
+  // border-bottom: solid 1px map-get($color, orange);
   width: auto;
   position: relative;
-  div.form-field-wrapper{
-    display: grid;
-  }
 }

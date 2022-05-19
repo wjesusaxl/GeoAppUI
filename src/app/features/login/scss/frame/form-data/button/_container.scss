@@ -1,0 +1,16 @@
+app-form-data div.button-list app-button {
+  button.continue {
+    background: map-get($color, orange);
+    border: none;
+    margin-left: auto;
+    margin-right: $frame-margin;
+    padding: .25rem;
+    align-items: center;
+    margin-left: auto;
+    padding: .5rem 2.5rem;
+    width: fit-content;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}

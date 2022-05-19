@@ -1,6 +1,18 @@
-<div class="icon {{formField.icon.class}}" [innerHTML]="formField.safeContent">
-</div>
 <div class="form-field-wrapper" [formGroup]="fgroup">
-    <input type="text" formControlName="{{formField.name}}" *ngIf="formField.type === 1" autocomplete="off" autofocus placeholder="{{formField.name}}" spellcheck='false' autocorrect='off'/>
+    <div class="icon {{formField.icon.class}}" [innerHTML]="formField.safeContent">
+    </div>
+    <input 
+        type="text" 
+        formControlName="{{formField.name}}" 
+        *ngIf="formField.type === 1" 
+        autocomplete="off" 
+        spellcheck='false' 
+        autocorrect='off'
+        placeholder="{{formField.name}}"
+        autofocus
+    />
     <label for="{{formField.name}}">{{formField.label}}</label>
+</div>
+<div class="validation">
+    <span class="message" *ngIf="showValMessage">{{validationMessage}}</span>
 </div>
