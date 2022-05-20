@@ -22,11 +22,11 @@
     <h3>Login</h3>
 </section>
 <app-form-data 
-    [formData]="formData" 
-    (formEvent)="formContent=$event"
-    [parentCallbackFunction]="validateUser"
+    [formData] = "formData"
+    [extEvent] = "extValidateUser"
 >
 </app-form-data>
 <pre>{{user | json}}</pre>
 
+<!-- (formEvent)="formContent=$event" -->
 <!---[parentCallbackFunction]="validateUser"-->

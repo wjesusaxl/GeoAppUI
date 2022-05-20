@@ -4,6 +4,7 @@ import { FormField } from '../../models/form-field';
 import { Button } from '../../models/button';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ControlContainer, FormControl, FormGroup, FormGroupDirective, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-form-data',
@@ -19,8 +20,9 @@ export class FormDataComponent implements OnInit {
   public buttonList: Button[] = [] as Button[];  
 
   @Input() formData: FormData;
-  @Output() formEvent = new EventEmitter<any>();
-  @Input() parentCallbackFunction:(args:any)=> void;
+  @Output() formEvent = new EventEmitter<User>();
+  // @Input() parentCallbackFunction:(args:any)=> void;
+  @Input() extEvent: (param:any) => void;
   fgroup : FormGroup;
   showValMessage:boolean;
 
@@ -70,21 +72,18 @@ export class FormDataComponent implements OnInit {
   }
 
   onSubmit(form:any){
-    // if(this.fgroup.valid){
-    //   console.log(form);
-    // }else{
-    //   console.log("error");
-    // }
+    
   }
 
   GetFormContent(){
+    console.log("Get Form Content");
     let data:any = {};
     this.showValMessage = !this.fgroup.valid;
     if(this.fgroup.valid){
       data = this.fgroup.value;
     }
-    // this.formEvent.emit(data);
-    this.parentCallbackFunction(this.fgroup.value);
+    this.extEvent(data);
+    
   }
 
 }

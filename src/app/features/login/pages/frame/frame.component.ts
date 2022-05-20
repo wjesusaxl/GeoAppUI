@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from 'src/app/core/services/user.service';
 import { FormData } from 'src/app/shared/models/form-data';
@@ -14,23 +15,29 @@ export class FrameComponent implements OnInit {
  
   public formData: FormData = LoginFormData;
   public user:User;
-  public formContent:any;
+  // public formContent:any;
+  // public extValidateUser = this.validateUser.bind(this);
+  public extValidateUser = this.validateUser.bind(this);
   
   ngOnInit(): void {
-    // this.userService.getUser().subscribe((data:User) => {
-    //   this.user = data;
-    // } )
+    
+    // if(this.formContent){
+    //   console.log(this.formContent);
+    //   this.userService.getUser(this.formContent["username"]).subscribe((data:User) => {
+    //     this.user = data;
+    //   } )
+    // }
+    
   }
 
   constructor(private userService: UserService){
   }
 
-  validateUser(formContent:any){
-    this.userService.getUser().subscribe((data:User)=>{
-
-      this.user = data;
-    });    
+  public validateUser(formContent:any):void{
     
+    this.userService.getUser(formContent["username"]).subscribe((data:User)=>{
+      this.user = data;
+    });
   }
 
 }
