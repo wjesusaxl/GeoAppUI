@@ -30,7 +30,6 @@ export class FormDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.SetLists();
-    // this.formGroupX = new FormGroup(this.GetFormControlList());
     this.fgroup = new FormGroup(this.GetFormControlList());
   }
 
@@ -59,15 +58,11 @@ export class FormDataComponent implements OnInit {
   }
 
   GetFormControlList(){
-    let list:any;
     let group: any = {};
-    list = this.formData["controls"]["formFields"];
+    let list = this.formData["controls"]["formFields"];
     list.forEach( i => {
       group[i.name] = new FormControl('', i.fieldValidator.required ? Validators.required : null)
     });
-    group = {
-      "username": new FormControl('', Validators.required)
-    };
     return group;
   }
 
@@ -76,14 +71,14 @@ export class FormDataComponent implements OnInit {
   }
 
   GetFormContent(){
-    console.log("Get Form Content");
-    let data:any = {};
+    let data:any;
     this.showValMessage = !this.fgroup.valid;
     if(this.fgroup.valid){
       data = this.fgroup.value;
+      console.log("Calling externally");
+      if(data)
+        this.extEvent(data);
     }
-    this.extEvent(data);
-    
   }
 
 }

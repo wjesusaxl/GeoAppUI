@@ -15,18 +15,9 @@ export class FrameComponent implements OnInit {
  
   public formData: FormData = LoginFormData;
   public user:User;
-  // public formContent:any;
-  // public extValidateUser = this.validateUser.bind(this);
   public extValidateUser = this.validateUser.bind(this);
   
   ngOnInit(): void {
-    
-    // if(this.formContent){
-    //   console.log(this.formContent);
-    //   this.userService.getUser(this.formContent["username"]).subscribe((data:User) => {
-    //     this.user = data;
-    //   } )
-    // }
     
   }
 
