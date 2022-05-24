@@ -18,7 +18,8 @@
         "required": true,
         "minLength": 3,
         "errorMessage": "Enter a valid username value."
-      }
+      },
+      "visible": true
     }]
   },
   "buttons": [{

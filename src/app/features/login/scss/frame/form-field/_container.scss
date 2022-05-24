@@ -1,8 +1,10 @@
 app-form-data div.form-field-list app-form-field{
   div.form-field-wrapper{
     display: grid;
-    border-bottom: solid 1px map-get($color, orange);
-    min-height: 2rem;
-    align-items: end;
+    &.visible{
+    	border-bottom: solid 1px map-get($color, orange);
+    	min-height: 2rem;
+    	align-items: end;
+	}
   }
 }

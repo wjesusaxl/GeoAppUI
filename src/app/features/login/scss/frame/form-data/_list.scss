@@ -1,0 +1,7 @@
+login-frame div.form-data-list {
+	display: grid;
+	grid-template-columns: auto;
+    padding: 0 $frame-margin;
+    position: relative;
+    overflow: hidden;
+}

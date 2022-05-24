@@ -1,5 +1,14 @@
-<div class="form-field-wrapper" [formGroup]="fgroup">
-    <div class="icon {{formField.icon.class}}" [innerHTML]="formField.safeContent">
+<div 
+    class="form-field-wrapper" 
+    [formGroup]="fgroup"
+    [class.visible] = "formField.visible"
+>
+    <div 
+        class="icon 
+        {{fieldIconClass}}" 
+        [innerHTML]="formField.safeContent"
+        *ngIf="formField.visible"
+        >
     </div>
     <input 
         type="text" 
@@ -10,9 +19,25 @@
         autocorrect='off'
         placeholder="{{formField.name}}"
         autofocus
+        #formFieldRef
     />
-    <label for="{{formField.name}}">{{formField.label}}</label>
+    <input 
+        type="hidden" 
+        formControlName="{{formField.name}}" 
+        *ngIf="formField.type === 5" 
+    />
+    <label 
+        for="{{formField.name}}"
+        *ngIf="formField.visible"
+    >
+    {{formField.label}}
+    </label>
 </div>
 <div class="validation">
-    <span class="message" *ngIf="showValMessage">{{validationMessage}}</span>
+    <span 
+        class="message" 
+        *ngIf="showValMessage"
+    >
+    {{validationMessage}}
+    </span>
 </div>

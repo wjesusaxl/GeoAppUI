@@ -1,9 +1,26 @@
-app-form-data{
-  display: grid;
-  grid-template-columns: auto;
-  form{
-    display: grid;
-    // grid-row-gap: 2rem;
-  padding-bottom: 1rem;
-  }
+div.form-data-list app-form-data{
+	display: grid;
+	grid-template-columns: auto;
+	position: absolute;
+	bottom: 1rem;
+	right: 0;
+	// overflow: hidden;
+	transform-origin: left;
+	transition: all .5s ease-in-out;
+	transform: translate(100%, 0rem);
+	width: 100%;
+	&.active{
+		position: relative;
+		transition: all .5s ease-in-out;
+		transform: translate(0, 0);
+  		form{
+    			display: grid;
+    			// grid-row-gap: 2rem;
+  			// padding-bottom: 1rem;
+  		}
+  	}
+	&.hidden{
+		transition: all .3s ease-in-out;
+		transform: translate(-100%, 0);
+	}
 }

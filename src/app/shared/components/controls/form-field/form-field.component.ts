@@ -1,5 +1,5 @@
-import { Component, Input, Output, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { FormField } from 'src/app/shared/models/form-field';
 
 @Component({
@@ -13,11 +13,17 @@ export class FormFieldComponent implements OnInit {
   @Input() formField:FormField;
   @Input() fgroup:FormGroup;
   @Input() showValMessage:boolean;
+  @ViewChild("formFieldRef") formFieldRef:ElementRef  ;
+
   public validationMessage:string;
+  public fieldIconClass:string;
+  // public name:string;
   
   constructor() { }
 
   ngOnInit(): void {
-    this.validationMessage = this.formField.fieldValidator.errorMessage;
+    // this.name = this.formField.name;
+    this.validationMessage = this.formField.fieldValidator? this.formField.fieldValidator.errorMessage : "";
+    this.fieldIconClass = this.formField.icon ? this.formField.icon.class : "";
   }
 }

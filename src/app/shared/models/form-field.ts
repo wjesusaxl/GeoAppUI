@@ -9,7 +9,8 @@ export interface FormField{
     type: DataFieldType;    
     small: string;
     placeholder: string;
-    icon: Icon;
-    fieldValidator: FieldValidator;
+    icon?: Icon;
+    fieldValidator?: FieldValidator;
     safeContent?: string;
+    visible: boolean;
 }

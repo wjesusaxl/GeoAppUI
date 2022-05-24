@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit, Output, ViewEncapsulation, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit, Output, ViewEncapsulation, EventEmitter} from '@angular/core';
 import { FormData } from '../../models/form-data';
 import { FormField } from '../../models/form-field';
 import { Button } from '../../models/button';
@@ -18,11 +18,13 @@ export class FormDataComponent implements OnInit {
 
   public formFieldList: FormField[] = [] as FormField[];
   public buttonList: Button[] = [] as Button[];  
-
+  
   @Input() formData: FormData;
+  @Input() public active:boolean;
   @Output() formEvent = new EventEmitter<User>();
   // @Input() parentCallbackFunction:(args:any)=> void;
   @Input() extEvent: (param:any) => void;
+  @Input() status:string;
   fgroup : FormGroup;
   showValMessage:boolean;
 
@@ -40,7 +42,7 @@ export class FormDataComponent implements OnInit {
       this.formFieldList = list.map((field:FormField) => {
         return {
           ...field,
-          safeContent : field.icon.content ? this.sanitizer.bypassSecurityTrustHtml(field.icon.content) : ""
+          safeContent : field.icon ? (field.icon.content ? this.sanitizer.bypassSecurityTrustHtml(field.icon.content) : "") : ""
         }
       });
 
@@ -61,7 +63,7 @@ export class FormDataComponent implements OnInit {
     let group: any = {};
     let list = this.formData["controls"]["formFields"];
     list.forEach( i => {
-      group[i.name] = new FormControl('', i.fieldValidator.required ? Validators.required : null)
+      group[i.name] = new FormControl('', i.fieldValidator ? (i.fieldValidator.required ? Validators.required : null) : null)
     });
     return group;
   }
@@ -75,10 +77,13 @@ export class FormDataComponent implements OnInit {
     this.showValMessage = !this.fgroup.valid;
     if(this.fgroup.valid){
       data = this.fgroup.value;
-      console.log("Calling externally");
       if(data)
         this.extEvent(data);
     }
+  }
+
+  SetStatus(status){
+
   }
 
 }

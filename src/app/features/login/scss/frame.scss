@@ -1,6 +1,15 @@
 @import './src/scss/colors';
 @import 'common';
+
 @import 'frame/form-data/container';
+@import 'frame/form-data/list';
+
+@import 'frame/form-data/label';
+@import 'frame/form-data/button/container';
+@import 'frame/form-data/button/icon';
+@import 'frame/form-data/button/span';
+@import 'frame/form-data/button/transition';
+
 
 @import 'frame/form-field/container';
 @import 'frame/form-field/icon';
@@ -8,10 +17,3 @@
 @import 'frame/form-field/input';
 @import 'frame/form-field/validation';
 
-@import 'frame/form-data/label';
-
-
-@import 'frame/form-data/button/container';
-@import 'frame/form-data/button/icon';
-@import 'frame/form-data/button/span';
-@import 'frame/form-data/button/transition';
