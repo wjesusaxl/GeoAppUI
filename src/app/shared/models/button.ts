@@ -1,4 +1,5 @@
 import { Icon } from "./icon";
+import { ButtonEvent } from "./button-event";
 
 export interface Button{
     name: string;
@@ -7,4 +8,6 @@ export interface Button{
     title: string;
     icon?: Icon;
     safeContent? : string;
+    eventToTrigger? : ButtonEvent;
 }
+

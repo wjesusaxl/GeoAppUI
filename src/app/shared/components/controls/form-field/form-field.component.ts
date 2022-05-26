@@ -13,7 +13,9 @@ export class FormFieldComponent implements OnInit {
   @Input() formField:FormField;
   @Input() fgroup:FormGroup;
   @Input() showValMessage:boolean;
-  @ViewChild("formFieldRef") formFieldRef:ElementRef  ;
+  // @ViewChild("formFieldRef") formFieldRef:ElementRef  ;
+
+  private innerValue: any = '';
 
   public validationMessage:string;
   public fieldIconClass:string;
@@ -25,5 +27,14 @@ export class FormFieldComponent implements OnInit {
     // this.name = this.formField.name;
     this.validationMessage = this.formField.fieldValidator? this.formField.fieldValidator.errorMessage : "";
     this.fieldIconClass = this.formField.icon ? this.formField.icon.class : "";
+  }
+
+  @Input()
+  get value(): any{
+    return this.innerValue;
+  }
+
+  set value(v: any){
+    this.innerValue = v;
   }
 }

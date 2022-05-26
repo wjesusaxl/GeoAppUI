@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit, Output, ViewEncapsulation, EventEmitter} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit, Output, ViewEncapsulation, EventEmitter, ViewChildren, ElementRef, QueryList} from '@angular/core';
 import { FormData } from '../../models/form-data';
 import { FormField } from '../../models/form-field';
 import { Button } from '../../models/button';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ControlContainer, FormControl, FormGroup, FormGroupDirective, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { User } from '../../models/user';
+import { ButtonEvent } from '../../models/button-event';
 
 @Component({
   selector: 'app-form-data',
@@ -72,6 +73,13 @@ export class FormDataComponent implements OnInit {
     
   }
 
+  TriggerEvent(event:ButtonEvent|undefined){
+    if(event){
+      if(event.method == "GetFormContent")
+      this.GetFormContent();
+    }
+  }
+
   GetFormContent(){
     let data:any;
     this.showValMessage = !this.fgroup.valid;
@@ -86,4 +94,13 @@ export class FormDataComponent implements OnInit {
 
   }
 
+  public SetValues(data:any){
+    Object.keys(this.fgroup.controls).forEach(key => {      
+      this.fgroup.controls[key].setValue(data[key]);
+    });
+  }
+
+  public Hide(){
+    
+  }
 }

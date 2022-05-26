@@ -16,7 +16,7 @@
       [button]="button" 
       *ngFor="let button of buttonList"       
       [formValid]="fgroup.valid"
-      (click)="GetFormContent()"      
+      (click)="TriggerEvent(button.eventToTrigger)"
     >
     </app-button>
   </div>

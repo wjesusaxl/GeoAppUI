@@ -1,11 +1,10 @@
 // import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { of } from 'rxjs';
 import { UserService } from 'src/app/core/services/user.service';
 import { FormData } from 'src/app/shared/models/form-data';
-import { User } from 'src/app/shared/models/user';
 import LoginFormData from '../../forms/username.json';
 import PswFormData from '../../forms/password.json';
+import { FormDataComponent } from 'src/app/shared/components/form-data/form-data.component';
 
 @Component({
   selector: 'login-frame',
@@ -21,6 +20,7 @@ export class FrameComponent implements OnInit {
   public user;
   @ViewChild("formLogin", { read: ElementRef }) formLogin:ElementRef;
   @ViewChild("formPassword", { read: ElementRef }) formPassword:ElementRef;
+  @ViewChild("formPassword") formPasswordC:FormDataComponent;
   
   ngOnInit(): void {
     
@@ -55,6 +55,11 @@ export class FrameComponent implements OnInit {
         }
 
         this.formPassword.nativeElement.classList.add('active');
+        this.formPasswordC.SetValues({
+          username: username,
+          password: ""
+        });
+        
           
       }
       catch(ex){
