@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit, Output, ViewEncapsulation, EventEmitter, ViewChildren, ElementRef, QueryList} from '@angular/core';
+import { Component, forwardRef, Input, OnInit, Output, ViewEncapsulation, EventEmitter, ViewChildren, ElementRef, QueryList} from '@angular/core';
 import { FormData } from '../../models/form-data';
 import { FormField } from '../../models/form-field';
 import { Button } from '../../models/button';
@@ -12,7 +12,10 @@ import { ButtonEvent } from '../../models/button-event';
   templateUrl: './form-data.component.html',
   styleUrls: ['./form-data.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  viewProviders: [{provide: ControlContainer, useExisting: FormGroupDirective}]
+  viewProviders: [{
+    provide: ControlContainer, 
+    useExisting: FormGroupDirective}
+  ]
 })
 
 export class FormDataComponent implements OnInit {
@@ -28,7 +31,8 @@ export class FormDataComponent implements OnInit {
   @Input() status:string;
   fgroup : FormGroup;
   showValMessage:boolean;
-
+  
+  
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
@@ -80,6 +84,10 @@ export class FormDataComponent implements OnInit {
     }
   }
 
+  SetFormClasses(){
+
+  }
+
   GetFormContent(){
     let data:any;
     this.showValMessage = !this.fgroup.valid;
@@ -101,6 +109,6 @@ export class FormDataComponent implements OnInit {
   }
 
   public Hide(){
-    
+
   }
 }

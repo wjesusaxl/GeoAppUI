@@ -21,12 +21,18 @@ export class FrameComponent implements OnInit {
   @ViewChild("formLogin", { read: ElementRef }) formLogin:ElementRef;
   @ViewChild("formPassword", { read: ElementRef }) formPassword:ElementRef;
   @ViewChild("formPassword") formPasswordC:FormDataComponent;
+
+  formLoginClasses = ['active'];
+  formPasswordClasses = [];
   
   ngOnInit(): void {
     
   }
 
-  constructor(private userService: UserService, private renderer: Renderer2){
+  constructor(
+    private userService: UserService
+    ){
+      
   }
 
   public validateUser(formContent:any):void{

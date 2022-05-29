@@ -11,7 +11,7 @@
     >
     </app-form-field>
   </div>
-  <div class="button-list" *ngIf="buttonList" [formGroup]="fgroup">
+  <div class="button-list" *ngIf="buttonList">
     <app-button 
       [button]="button" 
       *ngFor="let button of buttonList"       
