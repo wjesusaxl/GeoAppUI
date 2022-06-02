@@ -1,3 +1,3 @@
 export enum ApiUrls{
-    User = '/user.php'
+    User = 'user.php'
 }

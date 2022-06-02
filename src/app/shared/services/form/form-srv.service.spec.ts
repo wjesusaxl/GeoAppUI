@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FormButtonService } from './form-button.service';
+import { FormSrvService } from './form-srv.service';
 
-describe('FormButtonServiceService', () => {
-  let service: FormButtonService;
+describe('FormSrvService', () => {
+  let service: FormSrvService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FormButtonService);
+    service = TestBed.inject(FormSrvService);
   });
 
   it('should be created', () => {

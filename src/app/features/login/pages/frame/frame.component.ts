@@ -1,6 +1,6 @@
 // import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { UserService } from 'src/app/core/services/user.service';
+import { UserService } from 'src/app/core/services/user/user.service';
 import { FormData } from 'src/app/shared/models/form-data';
 import LoginFormData from '../../forms/username.json';
 import PswFormData from '../../forms/password.json';
@@ -37,9 +37,9 @@ export class FrameComponent implements OnInit {
 
   public validateUser(formContent:any):void{
     let username = formContent["username"];
-    this.userService.getUser(username).subscribe((data:any)=>{
-
+    this.userService.ValidateUser(username).subscribe((data:any)=>{
       try{
+        console.log("Data", data);
         if(!("processResult" in data))
         throw new Error("Wrong data structure");
           let processResult = data["processResult"];

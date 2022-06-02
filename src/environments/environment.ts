@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: "http://192.168.18.192/Test/API",
+  apiURL: "/api/",
   apiKey: "",
   envName: "dev",
   enableDebugTools: true,
