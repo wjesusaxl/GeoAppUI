@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { Button } from 'src/app/shared/models/button';
+import { FormButton } from 'src/app/shared/models/FormButton';
+import { FormSrvService } from 'src/app/shared/services/form/form-srv.service';
 
 @Component({
   selector: 'app-button',
@@ -9,13 +10,12 @@ import { Button } from 'src/app/shared/models/button';
 })
 export class ButtonComponent implements OnInit {
 
-  @Input() button:Button;
-  @Input() callbackFunction: (args: any) => void;
-  @Input() formValid:boolean;
+  @Input() button:FormButton;
+    constructor(private formService:FormSrvService) { }
 
-  // @Output() extEvent = new EventEmitter<boolean>();
-  
-  constructor() { }
+  SendEvent(data:any){
+    this.formService.GetEvent(data);
+  }
 
   ngOnInit(): void {
   }

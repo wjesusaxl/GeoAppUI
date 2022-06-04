@@ -1,11 +1,12 @@
 import { Component, forwardRef, Input, OnInit, Output, ViewEncapsulation, EventEmitter, ViewChildren, ElementRef, QueryList} from '@angular/core';
-import { FormData } from '../../models/form-data';
-import { FormField } from '../../models/form-field';
-import { Button } from '../../models/button';
+import { FormData } from '../../models/FormData';
+import { FormField } from '../../models/FormField';
+import { FormButton } from '../../models/FormButton';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ControlContainer, FormControl, FormGroup, FormGroupDirective, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { User } from '../../models/user';
-import { ButtonEvent } from '../../models/button-event';
+import { User } from '../../models/User';
+import { EventToTrigger } from '../../models/Event';
+import { FormSrvService } from '../../services/form/form-srv.service';
 
 @Component({
   selector: 'app-form-data',
@@ -21,23 +22,29 @@ import { ButtonEvent } from '../../models/button-event';
 export class FormDataComponent implements OnInit {
 
   public formFieldList: FormField[] = [] as FormField[];
-  public buttonList: Button[] = [] as Button[];  
+  public buttonList: FormButton[] = [] as FormButton[];  
   
   @Input() formData: FormData;
   @Input() public active:boolean;
-  @Output() formEvent = new EventEmitter<User>();
+  @Output() formEvent = new EventEmitter<any>();
   // @Input() parentCallbackFunction:(args:any)=> void;
-  @Input() extEvent: (param:any) => void;
+  // @Input() extEvent: (param:any) => void;
   @Input() status:string;
   fgroup : FormGroup;
-  showValMessage:boolean;
+  // showValMessage:boolean;
   
   
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer, private formService:FormSrvService) { }
 
   ngOnInit(): void {
     this.SetLists();
     this.fgroup = new FormGroup(this.GetFormControlList());
+
+    this.formService.ReturnEvent().subscribe({
+      next:(data:any) => {
+        this.ProcessEvent(data);
+      }
+    })
   }
 
   SetLists():void{
@@ -53,7 +60,7 @@ export class FormDataComponent implements OnInit {
 
       if("buttons" in this.formData){
         buttons = this.formData["buttons"];
-        this.buttonList = buttons.map((button:Button) => {
+        this.buttonList = buttons.map((button:FormButton) => {
           return {
             ...button,
             safeContent : button.icon!.content ? this.sanitizer.bypassSecurityTrustHtml(button.icon!.content) : ""
@@ -77,30 +84,22 @@ export class FormDataComponent implements OnInit {
     
   }
 
-  TriggerEvent(event:ButtonEvent|undefined){
-    if(event){
-      if(event.method == "GetFormContent")
-      this.GetFormContent();
-    }
-  }
-
-  SetFormClasses(){
-
-  }
 
   GetFormContent(){
     let data:any;
-    this.showValMessage = !this.fgroup.valid;
+    // this.showValMessage = !this.fgroup.valid;
     if(this.fgroup.valid){
       data = this.fgroup.value;
-      if(data)
-        this.extEvent(data);
+      // if(data)
+      //   this.extEvent(data);
     }
   }
 
-  SetStatus(status){
-
-  }
+ ProcessEvent(data:any){
+   console.log("Form Data", this.fgroup.value);
+   this.formEvent.emit(data);
+   
+ }
 
   public SetValues(data:any){
     Object.keys(this.fgroup.controls).forEach(key => {      

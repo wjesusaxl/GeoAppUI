@@ -6,17 +6,14 @@
       [formField]="formField" 
       [fgroup]="fgroup" 
       *ngFor="let formField of formFieldList"
-      [showValMessage] = "showValMessage"
       [class.visible] = "formField.visible"
     >
     </app-form-field>
   </div>
   <div class="button-list" *ngIf="buttonList">
     <app-button 
-      [button]="button" 
-      *ngFor="let button of buttonList"       
-      [formValid]="fgroup.valid"
-      (click)="TriggerEvent(button.eventToTrigger)"
+      *ngFor="let button of buttonList"
+      [button]="button"
     >
     </app-button>
   </div>
@@ -30,3 +27,12 @@
 (extEvent)="showValMessage=$event"
 >
 </app-button> -->
+
+<!-- <app-form-field
+      [formField]="formField" 
+      [fgroup]="fgroup" 
+      *ngFor="let formField of formFieldList"
+      [showValMessage] = "showValMessage"
+      [class.visible] = "formField.visible"
+    >
+    </app-form-field> -->

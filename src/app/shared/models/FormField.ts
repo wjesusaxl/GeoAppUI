@@ -1,6 +1,6 @@
-import { DataFieldType } from "../enums/data-field-type";
-import { Icon } from "./icon";
-import { FieldValidator } from "./field-validator";
+import { DataFieldType } from "../enums/DataFieldType";
+import { Icon } from "./Icon";
+import { FieldValidator } from "./FiieldValidator";
 
 export interface FormField{
     name: string;

@@ -39,8 +39,8 @@
 <div class="form-data-list">
     <app-form-data 
         [formData]="usrForm" 
-        [extEvent]="extValidateUser"
-        [ngClass]="formLoginClasses"        
+        [ngClass]="formLoginClasses"
+        (formEvent)="TriggerEvent($event)"
         #formLogin
     >
     </app-form-data>

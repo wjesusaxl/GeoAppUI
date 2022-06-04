@@ -1,12 +1,13 @@
-app-form-data div.form-field-list app-form-field{
+app-form-data div.form-field-list app-form-field {
   display: grid;
   position: relative;
   height: 0;
   width: 100%;
-  &.visible{  	
-  	padding-top: 2.5rem;  	
-  	// border-bottom: solid 1px map-get($color, orange);
-  	
-	height: fit-content;
+
+  &.visible {
+    padding-top: 2.5rem;
+    // border-bottom: solid 1px map-get($color, orange);
+
+    height: fit-content;
   }
 }

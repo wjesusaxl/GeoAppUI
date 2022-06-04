@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, Observer, Subject, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ApiUrls } from 'src/app/shared/enums/api-urls';
-import { ProcessResult } from 'src/app/shared/models/process-result';
-import { User } from 'src/app/shared/models/user';
+import { ProcessResult } from 'src/app/shared/models/ProcessResult';
+import { User } from 'src/app/shared/models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,6 @@ export class UserService {
     return new Observable<ProcessResult>((observer) => {
       this.GetUser(username).subscribe({
           next:(response:any) => {
-
             if(response["success"]){
               
             }

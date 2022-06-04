@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormField } from 'src/app/shared/models/form-field';
+import { FormField } from 'src/app/shared/models/FormField';
 
 @Component({
   selector: 'app-form-field',
