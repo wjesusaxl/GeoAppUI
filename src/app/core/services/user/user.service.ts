@@ -23,9 +23,9 @@ export class UserService {
             if(response["success"]){
               
             }
-            let procRes:ProcessResult = {
-              number: response["status"],
-              code: response["message"],
+            let procRes:ProcessResult = {              
+              name: response["message"],
+              code: response["status"],
               success: true,
               data: {
                 username: response["username"]
@@ -39,7 +39,7 @@ export class UserService {
   }
 
   private GetUser(username:string){
-    let apiUrl = "/api/user.php";
+    let apiUrl = "/api/ApiUserRegister/Belcorp/ludelacruz";
     const headers = { 'Content-Type': 'application/json; charset=utf-8' };
     const body = { username: username }
     return this.httpClient.post<User>(apiUrl, body, { headers });    

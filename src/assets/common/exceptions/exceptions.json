@@ -1,0 +1,61 @@
+{
+    "api":{
+        "100": {
+            "code": "wrong-payload",
+            "message":{
+                "eng": "Wrong payload structure.",
+                "esp": "Estructura de datos incorrecta."
+            }
+        },
+        "101": {
+            "code": "missing-credentials",
+            "message": {
+                "eng": "Missing authorization credentials.",
+                "esp": "No se encontraron credenciales para autorización."
+            }
+        }
+    },
+    "user-validation": {
+        "404": {
+            "code": "user-not-found",
+            "message": {
+                "eng": "User cannot be found.",
+                "esp": "Usuario no encontrado."
+            }
+        },
+        "103": {
+            "code": "wrong-password",
+            "message": {
+                "eng": "Wrong password.",
+                "esp": "Contraseña incorrecta."
+            }
+        }
+    },
+    "company-validation": {
+        "404": {
+            "code": "company-not-found",
+            "message": {
+                "eng": "Company cannot be found.",
+                "esp": "Compañía no encontrada"
+            }
+        }
+    },
+    "user-company-validation": {
+        "101": {
+            "code": "user-not-associated",
+            "message": {
+                "eng": "User is not associated to company: {$company}.",
+                "esp": "Usario no está asociado a la compañía: {$company}."
+            }
+        }
+    },
+    "form-validation": {        
+        "101": {
+            "code": "wrong-field-values",
+            "message": {
+                "eng": "Fill all required fields.",
+                "esp": "Llena todo los campos requeridos."
+            }
+        }
+    }
+}

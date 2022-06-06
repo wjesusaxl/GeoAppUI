@@ -8,6 +8,8 @@ import { FormDataComponent } from 'src/app/shared/components/form-data/form-data
 import { FormSrvService } from 'src/app/shared/services/form/form-srv.service';
 import { FormStatus} from '../../../../shared/enums/FormStatus';
 import { LoginForm } from '../../LoginForm';
+import { ProcessResult } from 'src/app/shared/models/ProcessResult';
+import { ExceptionSrvService } from 'src/app/shared/services/exception/exception-srv.service';
 
 @Component({
   selector: 'login-frame',
@@ -20,7 +22,7 @@ export class FrameComponent implements OnInit {
  
   public usrForm: FormData = LoginFormData;
   public pswForm: FormData = PswFormData;
-  public extValidateUser = this.validateUser.bind(this);
+  // public extValidateUser = this.validateUser.bind(this);
   public user;
   // @ViewChild("formLogin", { read: ElementRef }) formLogin:ElementRef;
   // @ViewChild("formPassword", { read: ElementRef }) formPassword:ElementRef;
@@ -47,26 +49,46 @@ export class FrameComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private formService: FormSrvService
+    private formService: FormSrvService,
+    private excService: ExceptionSrvService
     ){
       
   }
 
-  public TriggerEvent(data:any){
-    console.log("triggering", data);
-    this.userService.ValidateUser("wjesusaxl").subscribe({
-      next (usrResponse: any) {
-        console.log("Testing", usrResponse)
-      }
-    })
+  public TriggerEvent(result:ProcessResult){
+    try{
+      
+      if(!result.success)
+        throw new Error(
+          this.excService.getError(
+            result["name"], 
+            result["code"], 
+            "eng")["description"]);
+
+
+      
+      this.userService.ValidateUser("wjesusaxl").subscribe({
+        next (usrResponse: any) {
+          console.log("Testing", usrResponse)
+        }
+      })
+
+    }catch(ex){
+      console.log(ex);
+    }
+    
+    
     this.setFormStatus(LoginForm.Username, [FormStatus.inactive]);
+    this.setFormStatus(LoginForm.Password, [FormStatus.active, FormStatus.visible]);
   }
 
   public switchToForm(){
-
+    
   }
 
   public validateUser(formContent:any):void{
+
+
     // let username = formContent["username"];
     // this.userService.ValidateUser(username).subscribe((data:any)=>{
     //   try{

@@ -1,5 +1,5 @@
 export interface ProcessResult{
-    number: string,
+    name: string,
     code: string,    
     success: boolean,
     data?: any

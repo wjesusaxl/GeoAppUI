@@ -36,6 +36,7 @@
           {
             "name": "GetFormContent",
             "args":{
+              "validateContent": true,
               "process": "validate-user"
             }
           }

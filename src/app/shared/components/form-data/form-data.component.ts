@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit, Output, ViewEncapsulation, EventEmitter, ViewChildren, ElementRef, QueryList} from '@angular/core';
+import { Component, forwardRef, Input, OnInit, Output, ViewEncapsulation, EventEmitter, ViewChildren, ElementRef, QueryList, OnDestroy} from '@angular/core';
 import { FormData } from '../../models/FormData';
 import { FormField } from '../../models/FormField';
 import { FormButton } from '../../models/FormButton';
@@ -7,6 +7,8 @@ import { ControlContainer, FormControl, FormGroup, FormGroupDirective, NG_VALUE_
 import { User } from '../../models/User';
 import { EventToTrigger } from '../../models/Event';
 import { FormSrvService } from '../../services/form/form-srv.service';
+import { Subscription } from 'rxjs';
+import { ProcessResult } from '../../models/ProcessResult';
 
 @Component({
   selector: 'app-form-data',
@@ -16,21 +18,23 @@ import { FormSrvService } from '../../services/form/form-srv.service';
   viewProviders: [{
     provide: ControlContainer, 
     useExisting: FormGroupDirective}
-  ]
+  ],
+  providers: [FormSrvService]
 })
 
-export class FormDataComponent implements OnInit {
+export class FormDataComponent implements OnInit, OnDestroy {
 
   public formFieldList: FormField[] = [] as FormField[];
   public buttonList: FormButton[] = [] as FormButton[];  
   
   @Input() formData: FormData;
   @Input() public active:boolean;
-  @Output() formEvent = new EventEmitter<any>();
+  @Output() formEvent = new EventEmitter<ProcessResult>();
   // @Input() parentCallbackFunction:(args:any)=> void;
   // @Input() extEvent: (param:any) => void;
   @Input() status:string;
   fgroup : FormGroup;
+  formSubscription:Subscription;
   // showValMessage:boolean;
   
   
@@ -40,8 +44,8 @@ export class FormDataComponent implements OnInit {
     this.SetLists();
     this.fgroup = new FormGroup(this.GetFormControlList());
 
-    this.formService.ReturnEvent().subscribe({
-      next:(data:any) => {
+    this.formSubscription = this.formService.ReturnEvent().subscribe({
+      next:(data:any) => {        
         this.ProcessEvent(data);
       }
     })
@@ -95,11 +99,47 @@ export class FormDataComponent implements OnInit {
     }
   }
 
- ProcessEvent(data:any){
-   console.log("Form Data", this.fgroup.value);
-   this.formEvent.emit(data);
-   
- }
+  ProcessEvent(eventsToTrigger:any){    
+    let internalArgs: string[] = ['validateContent'];
+    let success:boolean = true;
+    let data:any = {};
+    let result:ProcessResult = {
+      name: "",
+      success: true,
+      code: ""          
+    };;
+    let process: string;
+    eventsToTrigger.forEach((e:any) =>{
+      if("args" in e){
+        let args = e["args"];
+        for(let k in args){
+          if(!internalArgs.includes(k))
+            result[k] = args[k]; 
+        }
+      }
+      if(e["name"] == "GetFormContent"){
+        result = {
+          name: "form-validation",
+          success: true,
+          code: "100"          
+        };
+        success = "args" in e ? 
+        ("validateContent" in e["args"] ? 
+          (e["args"]["validateContent"] ? 
+            (this.fgroup.valid ? 
+              true : false) : 
+            true ) : 
+          true ) : 
+        true ;
+        data = success ? this.fgroup.value : {};
+        result["success"] = success;
+        result["data"] = data;
+        result["code"] = success ? "100" : "101"        
+      }
+    });    
+    this.formEvent.emit(result);
+    
+  }
 
   public SetValues(data:any){
     Object.keys(this.fgroup.controls).forEach(key => {      
@@ -109,5 +149,9 @@ export class FormDataComponent implements OnInit {
 
   public Hide(){
 
+  }
+
+  ngOnDestroy(){
+    this.formSubscription.unsubscribe();
   }
 }
