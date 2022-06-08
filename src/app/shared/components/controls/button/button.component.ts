@@ -14,7 +14,7 @@ export class ButtonComponent implements OnInit {
   constructor(private formService:FormSrvService) { }
 
   SendEvent(data:any){
-    this.formService.GetEvent(data);
+    this.formService.GetProcess(data);
   }
 
   ngOnInit(): void {

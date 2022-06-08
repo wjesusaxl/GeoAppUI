@@ -8,14 +8,13 @@ import { Exception } from '../../models/Exception';
 export class ExceptionSrvService {
   constructor() { }
 
-  public getError(type:string, status:string, languageCode:string):Exception{
-
+  public getMessage(type:string, status:string, languageCode:string):Exception{
+    console.log("Exception Srv", [type, status, languageCode]);
     let exType = Exceptions[type];
     let ex = exType[status];
     let code = ex["code"];
     let description = ex["message"][languageCode];
-
-  console.log(type, );
+  
     return {
       type: type,
       status: status,

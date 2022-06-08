@@ -1,4 +1,4 @@
-export interface EventToTrigger{
+export interface Process{
     name: string,
     args?: any
 }

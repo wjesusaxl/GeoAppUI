@@ -1,0 +1,13 @@
+app-form-data div.process-message{
+    display: grid;
+    grid-template-columns: auto;
+    padding: .5rem 0;
+    span{
+        display: block;
+        color: map-get($color, orange);
+        -webkit-text-fill-color: map-get($color, orange);
+        // font-weight: 300;
+        margin: 0 auto;
+    }
+}
+  

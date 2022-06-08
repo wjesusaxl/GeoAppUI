@@ -4,7 +4,6 @@ div.form-data-list app-form-data{
 	position: absolute;
 	bottom: 1rem;
 	right: 0;
-	// overflow: hidden;
 	transform-origin: left;
 	transition: all .5s ease-in-out;
 	transform: translate(100%, 0rem);
@@ -15,8 +14,6 @@ div.form-data-list app-form-data{
 		transform: translate(0, 0);
   		form{
     			display: grid;
-    			// grid-row-gap: 2rem;
-  			// padding-bottom: 1rem;
   		}
   	}
 	&.hidden{

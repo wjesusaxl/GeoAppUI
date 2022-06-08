@@ -9,11 +9,11 @@ export class FormSrvService {
   private formSubject = new Subject<any>();
   constructor() { }
 
-  GetEvent(data:any){
+  GetProcess(data:any){
     this.formSubject.next(data);
   }
 
-  ReturnEvent():Observable<any>{
+  ReturnProcess():Observable<any>{
     return this.formSubject.asObservable();
   }
 }

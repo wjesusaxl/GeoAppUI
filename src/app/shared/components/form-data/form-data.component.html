@@ -10,6 +10,9 @@
     >
     </app-form-field>
   </div>
+  <div class="process-message">
+    <span>{{validationMessage}}</span>
+  </div>
   <div class="button-list" *ngIf="buttonList">
     <app-button 
       *ngFor="let button of buttonList"
@@ -17,6 +20,7 @@
     >
     </app-button>
   </div>
+  
 </form>
 
 <!-- <app-button 

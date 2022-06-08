@@ -1,6 +1,9 @@
+import { Process } from "./Process"
+
 export interface ProcessResult{
-    name: string,
-    code: string,    
-    success: boolean,
+    process: Process,
+    code: string,
+    message: string,    
+    success: boolean,    
     data?: any
 }

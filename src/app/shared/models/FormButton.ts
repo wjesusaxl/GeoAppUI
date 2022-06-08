@@ -1,5 +1,5 @@
 import { Icon } from "./Icon";
-import { EventToTrigger } from "./Event"
+import { Process } from "./Process"
 
 export interface FormButton{
     name: string;
@@ -8,6 +8,6 @@ export interface FormButton{
     title: string;
     icon?: Icon;
     safeContent? : string;
-    eventsToTrigger? : EventToTrigger;
+    process : Process;
 }
 

@@ -2,7 +2,8 @@ app-form-data div.form-field-list app-form-field div.validation{
   display: grid;
   grid-template-columns: auto;
   align-items: center;
-  min-height: 2rem;
+  // min-height: 2rem;
+  height: fit-content;
   span{
     display: block;
     color: map-get($color, orange);

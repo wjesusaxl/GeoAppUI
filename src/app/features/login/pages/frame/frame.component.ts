@@ -26,10 +26,10 @@ export class FrameComponent implements OnInit {
   public user;
   // @ViewChild("formLogin", { read: ElementRef }) formLogin:ElementRef;
   // @ViewChild("formPassword", { read: ElementRef }) formPassword:ElementRef;
-  @ViewChild("formLogin") formLogin:FormDataComponent;
+  @ViewChild("formLogin") formUser:FormDataComponent;
   @ViewChild("formPassword") formPassword:FormDataComponent;
 
-  formLoginClasses = {
+  formUsernameClasses = {
     visible: true,
     active: true,
     inactive: false,
@@ -49,8 +49,7 @@ export class FrameComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private formService: FormSrvService,
-    private excService: ExceptionSrvService
+    private formService: FormSrvService
     ){
       
   }
@@ -58,35 +57,43 @@ export class FrameComponent implements OnInit {
   public TriggerEvent(result:ProcessResult){
     try{
       
+      console.log("Result: ", result);
       if(!result.success)
-        throw new Error(
-          this.excService.getError(
-            result["name"], 
-            result["code"], 
-            "eng")["description"]);
-
-
+        throw new Error(result.message);
       
-      this.userService.ValidateUser("wjesusaxl").subscribe({
-        next (usrResponse: any) {
-          console.log("Testing", usrResponse)
-        }
-      })
+      if(!("data" in result))
+        throw new Error("error");
 
+      let data = result["data"];
+
+      if("validate-user" in result)
+        this.validateUser(data);
+
+
+      // this.userService.ValidateUser("wjesusaxl").subscribe((data:any)=>{
+
+      // });
+      
+      // this.setFormStatus(LoginForm.Username, [FormStatus.inactive]);
+      // this.setFormStatus(LoginForm.Password, [FormStatus.active, FormStatus.visible]);
+      
     }catch(ex){
-      console.log(ex);
+      this.formUser.DisplayProcessMessage(String(ex));
     }
     
     
-    this.setFormStatus(LoginForm.Username, [FormStatus.inactive]);
-    this.setFormStatus(LoginForm.Password, [FormStatus.active, FormStatus.visible]);
+    
   }
 
   public switchToForm(){
     
   }
 
-  public validateUser(formContent:any):void{
+  public validateUser(data:any){
+    console.log(data);
+  }
+
+  public validateUser2(formContent:any):void{
 
 
     // let username = formContent["username"];
@@ -135,7 +142,7 @@ export class FrameComponent implements OnInit {
       inactive: formStatusList.includes(FormStatus.inactive)
     };
 
-    this.formLoginClasses = loginForm == LoginForm.Username ? formClasses : this.formLoginClasses;
+    this.formUsernameClasses = loginForm == LoginForm.Username ? formClasses : this.formUsernameClasses;
     this.formPasswordClasses = loginForm == LoginForm.Password ? formClasses : this.formPasswordClasses;
   }
 
