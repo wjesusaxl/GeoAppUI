@@ -4,10 +4,9 @@ import { FormField } from '../../models/FormField';
 import { FormButton } from '../../models/FormButton';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ControlContainer, FormControl, FormGroup, FormGroupDirective, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { User } from '../../models/User';
-import { Process } from '../../models/Process';
 import { FormSrvService } from '../../services/form/form-srv.service';
 import { Subscription } from 'rxjs';
+import { Process } from '../../models/Process';
 import { ProcessResult } from '../../models/ProcessResult';
 import { ExceptionSrvService } from '../../services/exception/exception-srv.service';
 
@@ -30,15 +29,11 @@ export class FormDataComponent implements OnInit, OnDestroy {
   
   @Input() formData: FormData;
   @Input() public active:boolean;
-  @Output() formEvent = new EventEmitter<ProcessResult>();
-  // @Input() parentCallbackFunction:(args:any)=> void;
-  // @Input() extEvent: (param:any) => void;
+  @Output() formEvent = new EventEmitter<ProcessResult>();  
   @Input() status:string;
   fgroup : FormGroup;
   formSubscription:Subscription;
   public validationMessage;
-  // showValMessage:boolean;
-  
   
   constructor(
     private sanitizer: DomSanitizer, 
@@ -94,58 +89,45 @@ export class FormDataComponent implements OnInit, OnDestroy {
   }
 
 
-  GetFormContent(){
-    let data:any;
-    // this.showValMessage = !this.fgroup.valid;
-    if(this.fgroup.valid){
-      data = this.fgroup.value;
-      // if(data)
-      //   this.extEvent(data);
-    }
-  }
-
   RunProcess(process:Process){    
     let internalArgs: string[] = ['validateContent'];
-    let success:boolean = true;
     this.DisplayProcessMessage("");
   
-    let additionalInfo = {};
+    let args = {};
     if("args" in process){        
-      let additionalInfo = process["args"];
-      for(let k in additionalInfo){
+      let procArgs = process["args"];
+      for(let k in procArgs){
         if(!internalArgs.includes(k))
-        additionalInfo[k] = additionalInfo[k];
+        args[k] = procArgs[k];
       }
     }
-
+    let processName = process["name"];
     let validateContent:true = "args" in process ? ( "validateContent" in process["args"] ? process["args"]["validateContent"] : false ) : false;
 
-    if(process["name"] == "get-form-content"){
-
-      success = validateContent ? this.fgroup.valid : true ;
-      let result = {
-        process: {
-          name: "form-validation",
-        },
-        success: success,
-        code: success ? "100" : "101",
-        data: success ? this.fgroup.value : {},
-        message: "ok"
-      };
-      if(success){
-        this.formEvent.emit(result);
-      }
-      else{
-        this.DisplayProcessMessage(
-          this.excService.getMessage(
-            result["process"]["name"], 
-            result["code"], 
-            "eng")["description"]
-        );
-      }
-        
+    let success:boolean = validateContent ? this.fgroup.valid : true ;
+    let processCode = processName == "get-form-content" ? ( success ? "100" : "101" ) : "100";
+    let result = {
+      process: {
+        name: processName,
+        args: args
+      },
+      success: success,
+      code: processCode,
+      data: success ? this.fgroup.value : {},
+      message: "ok"
+    };
+    
+    if(success){
+      this.formEvent.emit(result);
     }
-
+    else{
+      this.DisplayProcessMessage(
+        this.excService.getMessage(
+          processName,
+          processCode,
+          "eng")["description"]
+      );
+    }
     
     
   }
@@ -167,4 +149,5 @@ export class FormDataComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.formSubscription.unsubscribe();
   }
+
 }

@@ -40,13 +40,14 @@
     <app-form-data 
         [formData]="usrForm"
         [ngClass]="formUsernameClasses"
-        (formEvent)="TriggerEvent($event)"
+        (formEvent)="TriggerProcess($event)"
         #formUsername
     >
     </app-form-data>
     <app-form-data 
         [formData]="pswForm" 
-        [ngClass]="formPasswordClasses"        
+        [ngClass]="formPasswordClasses"
+        (formEvent)="TriggerProcess($event)"
         #formPassword
     >
     </app-form-data>

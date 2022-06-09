@@ -49,7 +49,23 @@
             }
         }
     },
-    "form-validation": {        
+    "user-company": {
+        "302": {
+            "code": "user-not-associated",
+            "message": {
+                "eng": "User is not associated to company: {$company}.",
+                "esp": "Usario no está asociado a la compañía: {$company}."
+            }
+        },
+        "404": {
+            "code": "user-not-registered",
+            "message": {
+                "eng": "User is not registered.",
+                "esp": "Usario no está registrado."
+            }
+        }
+    },
+    "get-form-content": {        
         "101": {
             "code": "wrong-field-values",
             "message": {

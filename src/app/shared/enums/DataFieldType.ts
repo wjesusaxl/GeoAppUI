@@ -3,5 +3,7 @@ export enum DataFieldType {
     DatePicker = 2,
     DropDown = 3,
     DateTime = 4,
-    Hidden = 5
+    Hidden = 5,
+    Password = 6,
+    Number = 7
 }

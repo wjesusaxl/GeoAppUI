@@ -1,6 +1,11 @@
 {
     "/api/*":{
-        "target": "http://192.168.18.48",
+        "target": "http://45.79.199.115:5436",
+        "secure": false,
+        "logLevel": "debug"
+    },
+    "xxx/api/*":{
+        "target": "http://45.79.199.115:5436",
         "secure": false,
         "logLevel": "debug"
     }

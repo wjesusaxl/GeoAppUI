@@ -2,6 +2,7 @@
     class="form-field-wrapper" 
     [formGroup]="fgroup"
     [class.visible] = "formField.visible"
+    [ngSwitch]="formField.type"
 >
     <div 
         class="icon 
@@ -13,7 +14,7 @@
     <input 
         type="text" 
         formControlName="{{formField.name}}" 
-        *ngIf="formField.type === 1" 
+        *ngSwitchCase = "1" 
         autocomplete="off" 
         spellcheck='false' 
         autocorrect='off'
@@ -24,7 +25,18 @@
     <input 
         type="hidden" 
         formControlName="{{formField.name}}" 
-        *ngIf="formField.type === 5" 
+        *ngSwitchCase = "5"
+    />
+    <input 
+        type="password" 
+        formControlName="{{formField.name}}" 
+        *ngSwitchCase = "6" 
+        autocomplete="off" 
+        spellcheck='false' 
+        autocorrect='off'
+        placeholder="{{formField.name}}"
+        autofocus
+        #formFieldRef        
     />
     <label 
         for="{{formField.name}}"

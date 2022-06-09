@@ -20,41 +20,80 @@ export class UserService {
     ) 
     { }
 
-  public ValidateUser(username:string):Observable<ProcessResult>{
+  public ValidateUser(companyCode:string, username:string):Observable<ProcessResult>{
 
     return new Observable<ProcessResult>((observer) => {
-      this.GetUser(username).subscribe({
+      this.GetUser(companyCode, username).subscribe({
           next:(response:any) => {
-            if(response["success"]){
-              
+            let message:string = "";
+            try{
+              let result:ProcessResult = {
+                process: {
+                  name: response["validate"]
+                },
+                success: response["success"],
+                code: response["status"],
+                data: {
+                  username: username,
+                  companyCode: companyCode
+                }, 
+                message: response["success"] ? response["message"] : this.excService.getMessage(
+                  response["validate"],
+                  response["status"],
+                  "eng"
+                )["description"]
+              }
+              observer.next(result);
+            }catch(ex){
+              console.log(ex);
             }
-            let procRes:ProcessResult = {    
-              process: {
-                name: response["message"]
-              },
-              code: response["status"],
-              success: true,
-              data: {
-                username: response["username"]
-              },
-              message: this.excService.getMessage(
-                response["message"],
-                response["status"],
-                "eng"
-              )["description"]
-            };
-            observer.next(response);
           }
         });
     });
-    
+   
   }
 
-  private GetUser(username:string){
-    let apiUrl = "/api/ApiUserRegister/Belcorp/ludelacruz";
+  public ValidateUserPassword(username:string, password:string):Observable<ProcessResult>{
+    return new Observable<ProcessResult>((observer) => {
+      this.CallAPIToken(username, password).subscribe({
+        next:(response:any) => {
+          try{
+            let result:ProcessResult = {
+              process:{
+                name: "api-token"
+              },
+              success: true,
+              code: "100",
+              data: response,
+              message: "ok"
+            }
+            observer.next(result);
+          }catch(ex){
+            console.log(ex);
+          }
+        }
+      });
+    });
+  }
+
+  private GetUser(companyCode:string, username:string){
+    let apiUrl = "/api/ApiUserRegister/" + companyCode + "/" + username + "/";
+    // let apiUrl = "/api/ApiUserRegister/?companyCode=" + companyCode + "&username=" + username;
+    // const headers = { 'Content-Type': 'application/json; charset=utf-8' };
+    // const body = { username: username }
+    // return this.httpClient.post<User>(apiUrl, body, { headers });    
+    return this.httpClient.get<User>(apiUrl);
+  }
+
+  private CallAPIToken(username:string, password:string){
+    let apiUrl = "/api/token/";
     const headers = { 'Content-Type': 'application/json; charset=utf-8' };
-    const body = { username: username }
+    const body = { 
+      username: username,
+      password: password 
+    }
     return this.httpClient.post<User>(apiUrl, body, { headers });    
+    
   }
 
 }
