@@ -1,9 +1,9 @@
 <button 
     class="{{button.class}}" 
-    title="{{button.title}}"
+    title="{{title[languageCode]}}"
     (click)="SendEvent(button.process)"
 >
-    <span>{{button.label}}</span>
+    <span>{{label[languageCode]}}</span>
     <div 
         class="button-icon 
         {{button.icon!.class}}" 

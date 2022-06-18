@@ -1,0 +1,50 @@
+{
+    "title": {
+        "eng": "Welcome to GeoApp",
+        "esp": "Bienvenido a GeoApp"
+    },
+    "message": {
+        "eng": "Login",
+        "esp": "Ingreso"
+    },
+    "username": {
+        "eng": "username",
+        "esp": "usuario"
+    },
+    "username-placeholder": {
+        "eng": "username",
+        "esp": "usuario"
+    },
+    "username-continue": {
+        "eng": "Continue",
+        "esp": "Continuar"
+    },
+    "username-continue-title": {
+        "eng": "Click to continue",
+        "esp": "Hacer click para continuar"
+    },
+    "password": {
+        "eng": "password",
+        "esp": "contraseña"
+    },
+    "password-placeholder": {
+        "eng": "password",
+        "esp": "contraseña"
+    },
+    "password-back": {
+        "eng": "Back",
+        "esp": "Regresar"
+    },
+    "password-back-title": {
+        "eng": "Click to go back",
+        "esp": "Hacer click para regresar"
+    },
+    "password-continue": {
+        "eng": "Continue",
+        "esp": "Continuar"
+    },
+    "password-continue-title": {
+        "eng": "Click to login",
+        "esp": "Hacer click para ingresar"
+    }
+}

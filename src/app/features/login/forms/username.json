@@ -6,7 +6,7 @@
         "defaultValue": "",
         "type": 1,
         "small": "",
-        "placeholder": "username",
+        "placeholder": "username-placeholder",
         "icon": {
           "src": "",
           "class": "left-center", 
@@ -24,9 +24,9 @@
     },
     "buttons": [{
         "name": "next",
-        "label": "Continue",
+        "label": "username-continue",
         "class": "continue",
-        "title": "Click to login",
+        "title": "username-continue-title",
         "icon": {
           "src": "",
           "class": "continue",

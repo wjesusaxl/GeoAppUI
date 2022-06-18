@@ -2,6 +2,7 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Renderer2, Input } from '@angular/core';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { FormData } from 'src/app/shared/models/FormData';
+import Labels from 'src/assets/common/labels/login.json';
 import LoginFormData from '../../forms/username.json';
 import PswFormData from '../../forms/password.json';
 import { FormDataComponent } from 'src/app/shared/components/form-data/form-data.component';
@@ -9,7 +10,6 @@ import { FormSrvService } from 'src/app/shared/services/form/form-srv.service';
 import { FormStatus} from '../../../../shared/enums/FormStatus';
 import { LoginForm } from '../../LoginForm';
 import { ProcessResult } from 'src/app/shared/models/ProcessResult';
-import { ExceptionSrvService } from 'src/app/shared/services/exception/exception-srv.service';
 
 @Component({
   selector: 'login-frame',
@@ -22,6 +22,8 @@ export class FrameComponent implements OnInit {
  
   public usrForm: FormData = LoginFormData;
   public pswForm: FormData = PswFormData;
+  public labels:any = Labels;;
+  public languageCode:string = "esp";
   @Input() companyCode:string;
   // public extValidateUser = this.validateUser.bind(this);
   public user;
@@ -52,7 +54,7 @@ export class FrameComponent implements OnInit {
     private userService: UserService,
     private formService: FormSrvService
     ){
-      
+      // this.labels = Labels;
   }
 
   public TriggerProcess(result:ProcessResult){

@@ -29,6 +29,13 @@
                 "eng": "Wrong password.",
                 "esp": "Contraseña incorrecta."
             }
+        },
+        "500": {
+            "code": "api-error",
+            "message": {
+                "eng": "API call error.",
+                "esp": "Error en la llamada a API."
+            }
         }
     },
     "company-validation": {
@@ -37,6 +44,15 @@
             "message": {
                 "eng": "Company cannot be found.",
                 "esp": "Compañía no encontrada"
+            }
+        }
+    },
+    "project-validation": {
+        "101": {
+            "code": "project-not-found",
+            "message": {
+                "eng": "project cannot be found.",
+                "esp": "Proyecto no encontrado"
             }
         }
     },

@@ -1,12 +1,14 @@
 {
-    "/api/*":{
-        "target": "http://45.79.199.115:5436",
-        "secure": false,
-        "logLevel": "debug"
-    },
     "xxx/api/*":{
-        "target": "http://45.79.199.115:5436",
+        "target": "http://46.79.199.115:543",
         "secure": false,
-        "logLevel": "debug"
+        "logLevel": "debug",
+        "timeout": 3000
+    },
+    "/api/*":{
+        "target": "http://192.168.18.93",
+        "secure": false,
+        "logLevel": "debug",
+        "timeout": 3000
     }
 }

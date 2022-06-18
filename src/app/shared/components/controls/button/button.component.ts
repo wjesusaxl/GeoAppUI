@@ -11,6 +11,9 @@ import { FormSrvService } from 'src/app/shared/services/form/form-srv.service';
 export class ButtonComponent implements OnInit {
 
   @Input() button:FormButton;
+  @Input() label:any;
+  @Input() title:any;
+  @Input() languageCode:string;
   constructor(private formService:FormSrvService) { }
 
   SendEvent(data:any){

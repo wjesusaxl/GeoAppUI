@@ -31,9 +31,11 @@ export class FormDataComponent implements OnInit, OnDestroy {
   @Input() public active:boolean;
   @Output() formEvent = new EventEmitter<ProcessResult>();  
   @Input() status:string;
+  @Input() validationMessage:string;
   fgroup : FormGroup;
   formSubscription:Subscription;
-  public validationMessage;
+  @Input() labels:any;
+  @Input() languageCode:string;
   
   constructor(
     private sanitizer: DomSanitizer, 

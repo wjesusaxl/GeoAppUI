@@ -1,12 +1,16 @@
 <form 
   [formGroup]="fgroup" 
-  (ngSubmit)="onSubmit(fgroup.value)">
+  (ngSubmit)="onSubmit(fgroup.value)"
+  >
   <div class="form-field-list" *ngIf="formFieldList.length > 0">
     <app-form-field
-      [formField]="formField" 
-      [fgroup]="fgroup" 
-      *ngFor="let formField of formFieldList"
-      [class.visible] = "formField.visible"
+      [formField] = "formField" 
+      [fgroup] = "fgroup" 
+      [label] = "labels[formField.label]"    
+      [placeholder] = "labels[formField.placeholder]"
+      [languageCode] = "languageCode"
+      *ngFor = "let formField of formFieldList"
+      [class.visible] = "formField.visible" 
     >
     </app-form-field>
   </div>
@@ -17,6 +21,9 @@
     <app-button 
       *ngFor="let button of buttonList"
       [button]="button"
+      [label] = "labels[button.label]"
+      [title] = "labels[button.title]"
+      [languageCode] = "languageCode"
     >
     </app-button>
   </div>

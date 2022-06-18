@@ -33,21 +33,25 @@
     </div>
 </header>
 <section class="title">
-    <h2>Welcome to GeoApp</h2>
-    <h3>Login</h3>
+    <h2>{{labels["title"][languageCode]}}</h2>
+    <h3>{{labels["message"][languageCode]}}</h3>
 </section>
 <div class="form-data-list">
     <app-form-data 
-        [formData]="usrForm"
-        [ngClass]="formUsernameClasses"
-        (formEvent)="TriggerProcess($event)"
+        [formData] = "usrForm"
+        [ngClass] = "formUsernameClasses"
+        (formEvent) = "TriggerProcess($event)"
+        [labels] = "labels"
+        [languageCode] = "languageCode"
         #formUsername
     >
     </app-form-data>
     <app-form-data 
-        [formData]="pswForm" 
-        [ngClass]="formPasswordClasses"
-        (formEvent)="TriggerProcess($event)"
+        [formData] = "pswForm" 
+        [ngClass] = "formPasswordClasses"
+        (formEvent) = "TriggerProcess($event)"
+        [labels] = "labels"
+        [languageCode] = "languageCode"
         #formPassword
     >
     </app-form-data>

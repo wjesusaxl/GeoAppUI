@@ -13,15 +13,20 @@ export class FormFieldComponent implements OnInit {
   @Input() formField:FormField;
   @Input() fgroup:FormGroup;
   @Input() showValMessage:boolean;
+  @Input() label:any;
+  @Input() placeholder:any;
+  @Input() languageCode:string;
   // @ViewChild("formFieldRef") formFieldRef:ElementRef  ;
 
   private innerValue: any = '';
-
+  
   public validationMessage:string;
   public fieldIconClass:string;
   // public name:string;
   
-  constructor() { }
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
     // this.name = this.formField.name;

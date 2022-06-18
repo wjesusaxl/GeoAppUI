@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Observer, Subject, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -47,6 +47,17 @@ export class UserService {
             }catch(ex){
               console.log(ex);
             }
+          },
+          error(msg){
+            let result:ProcessResult = {
+              process: {
+                name: "user-validation"
+              },
+              success: false,
+              code: "api-error",
+              message: msg["message"]
+            }
+            observer.next(result);
           }
         });
     });
@@ -71,14 +82,17 @@ export class UserService {
           }catch(ex){
             console.log(ex);
           }
+        },
+        error(msg:string){
+          console.log("a ver");
         }
       });
     });
   }
 
   private GetUser(companyCode:string, username:string){
-    let apiUrl = "/api/ApiUserRegister/" + companyCode + "/" + username + "/";
-    // let apiUrl = "/api/ApiUserRegister/?companyCode=" + companyCode + "&username=" + username;
+    // let apiUrl = "/api/ApiUserRegister/" + companyCode + "/" + username + "/";
+    let apiUrl = "/api/ApiUserRegister/?companyCode=" + companyCode + "&username=" + username;
     // const headers = { 'Content-Type': 'application/json; charset=utf-8' };
     // const body = { username: username }
     // return this.httpClient.post<User>(apiUrl, body, { headers });    

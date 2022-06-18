@@ -13,12 +13,13 @@
     </div>
     <input 
         type="text" 
-        formControlName="{{formField.name}}" 
+        formControlName="{{formField.name}}"
+        name="{{formField.name}}"
         *ngSwitchCase = "1" 
         autocomplete="off" 
         spellcheck='false' 
         autocorrect='off'
-        placeholder="{{formField.name}}"
+        placeholder="{{placeholder[languageCode]}}"
         autofocus
         #formFieldRef        
     />
@@ -34,7 +35,7 @@
         autocomplete="off" 
         spellcheck='false' 
         autocorrect='off'
-        placeholder="{{formField.name}}"
+        placeholder="{{placeholder[languageCode]}}"
         autofocus
         #formFieldRef        
     />
@@ -42,7 +43,7 @@
         for="{{formField.name}}"
         *ngIf="formField.visible"
     >
-    {{formField.label}}
+    {{label[languageCode]}}
     </label>
 </div>
 <div class="validation">
