@@ -4,7 +4,11 @@
         "esp": "Proyectos"
     },
     "details-text":{
-        "eng": "Select one of the proyects listed below:",
-        "esp": "Selecciona alguno de los proyectos mostrados debajo:"
+        "eng": "Select one of the following projects:",
+        "esp": "Selecciona uno de los siguientes proyectos:"
+    },
+    "close-title":{
+        "eng": "Close window",
+        "esp": "Cerrar ventana"
     }
 }

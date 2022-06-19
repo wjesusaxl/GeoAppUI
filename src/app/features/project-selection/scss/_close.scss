@@ -1,0 +1,23 @@
+app-project-selection-main .project-selection-container .close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    transition: all .3s ease-in-out;
+    height: 1.5rem;
+    transform: translate(-50%, 50%);
+    transform-origin: center;
+    z-index: 2;
+    svg{
+        display: block;
+        height: 100%;
+        display: inherit;
+        stroke: map-get($color, orange);
+        stroke-width: 3px;    
+    }
+    &:hover{
+        transition: all .5s ease-in-out;
+        transform: translate(-50%, 50%) scale(1.15);
+    }    
+    
+}

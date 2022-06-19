@@ -10,6 +10,9 @@ import { FormSrvService } from 'src/app/shared/services/form/form-srv.service';
 import { FormStatus} from '../../../../shared/enums/FormStatus';
 import { LoginForm } from '../../LoginForm';
 import { ProcessResult } from 'src/app/shared/models/ProcessResult';
+import { ExceptionSrvService } from 'src/app/shared/services/exception/exception-srv.service';
+import { Router } from '@angular/router';
+import { Language } from 'src/app/shared/enums/Language';
 
 @Component({
   selector: 'login-frame',
@@ -23,7 +26,7 @@ export class FrameComponent implements OnInit {
   public usrForm: FormData = LoginFormData;
   public pswForm: FormData = PswFormData;
   public labels:any = Labels;;
-  public languageCode:string = "esp";
+  public language:Language = Language.english;
   @Input() companyCode:string;
   // public extValidateUser = this.validateUser.bind(this);
   public user;
@@ -51,8 +54,9 @@ export class FrameComponent implements OnInit {
   }
 
   constructor(
+    private router:Router,
     private userService: UserService,
-    private formService: FormSrvService
+    private excService: ExceptionSrvService
     ){
       // this.labels = Labels;
   }
@@ -61,7 +65,11 @@ export class FrameComponent implements OnInit {
     try{
 
       if(!result.success)
-        throw new Error(result.message);
+        throw new Error(this.excService.getMessage(
+          result["process"]["name"],
+          result["code"],
+          this.language
+        )["description"]);
 
         let process = result["process"];
 
@@ -92,10 +100,11 @@ export class FrameComponent implements OnInit {
               this.validateUser(username);
             }else if(action == "validate-user-password"){
               if(!("password" in data))
-              throw new Error("No password was provided.");
+                throw new Error("No password was provided.");
             
               let password = data["password"];
               this.validateUserPassword(username, password);
+
             }
             
             
@@ -149,7 +158,11 @@ export class FrameComponent implements OnInit {
         });
       }else{
         this.formUsername.DisplayProcessMessage(
-          response["message"]
+          this.excService.getMessage(
+            response["process"]["name"],
+            response["code"],
+            this.language
+          )["description"]
         );    
       }
     });
@@ -157,14 +170,20 @@ export class FrameComponent implements OnInit {
   }
 
   public validateUserPassword(username:string, password:string){
-    this.userService.ValidateUserPassword(username, password).subscribe((result:any)=>{
-      if(result["success"]){
-        console.log("Data", result["data"]);
+    this.userService.ValidateUserPassword(username, password).subscribe((response:any)=>{
+      if(!response["success"]){
+        console.log("home");
+        this.router.navigate(['']);
       }else{
-        this.formUsername.DisplayProcessMessage(
-          result["message"]
+        this.formPassword.DisplayProcessMessage(
+          this.excService.getMessage(
+            response["process"]["name"],
+            response["code"],
+            this.language
+          )["description"]
         );    
       }
+      
     });
   }
 

@@ -1,24 +1,15 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Observer, Subject, of } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { ApiUrls } from 'src/app/shared/enums/api-urls';
 import { ProcessResult } from 'src/app/shared/models/ProcessResult';
 import { User } from 'src/app/shared/models/User';
-import { ExceptionSrvService } from 'src/app/shared/services/exception/exception-srv.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private usrSubject = new Subject<ProcessResult>();
-
-  constructor(
-    private httpClient:HttpClient,
-    private excService:ExceptionSrvService
-    ) 
-    { }
+  constructor(private httpClient:HttpClient) { }
 
   public ValidateUser(companyCode:string, username:string):Observable<ProcessResult>{
 
@@ -37,11 +28,7 @@ export class UserService {
                   username: username,
                   companyCode: companyCode
                 }, 
-                message: response["success"] ? response["message"] : this.excService.getMessage(
-                  response["validate"],
-                  response["status"],
-                  "eng"
-                )["description"]
+                message: response["success"] ? response["message"] : ""
               }
               observer.next(result);
             }catch(ex){
@@ -54,7 +41,7 @@ export class UserService {
                 name: "user-validation"
               },
               success: false,
-              code: "api-error",
+              code: "500",
               message: msg["message"]
             }
             observer.next(result);
@@ -71,12 +58,12 @@ export class UserService {
           try{
             let result:ProcessResult = {
               process:{
-                name: "api-token"
+                name: "user-validation"
               },
-              success: true,
-              code: "100",
+              success: response["success"],
+              code: response["status"],
               data: response,
-              message: "ok"
+              message: response["success"] ? response["message"] : ""
             }
             observer.next(result);
           }catch(ex){
@@ -84,7 +71,15 @@ export class UserService {
           }
         },
         error(msg:string){
-          console.log("a ver");
+          let result:ProcessResult = {
+            process: {
+              name: "user-validation"
+            },
+            success: false,
+            code: "500",
+            message: msg["message"]
+          }
+          observer.next(result);
         }
       });
     });

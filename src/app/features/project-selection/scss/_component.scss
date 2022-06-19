@@ -1,0 +1,9 @@
+app-project-selection-main{
+    display: grid;
+    grid-template-columns: auto;
+    background: map-get($project-selection, dessert);
+    height: 100vh;
+    padding: 1rem 0;
+    width: fit-content;
+    position: relative;    
+}

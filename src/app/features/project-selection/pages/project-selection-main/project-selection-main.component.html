@@ -1,0 +1,22 @@
+<div class="project-selection-container">
+    <div class="close" title="{{labels['close-title'][language]}}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <line x1="2" y1="2" x2="98" y2="98"></line>
+            <line x1="2" y1="98" x2="98" y2="2"></line>
+        </svg>
+    </div>
+    <div class="title" title="">
+        <h1>{{labels["title"][language]}}</h1>
+        <span class="details">{{labels["details-text"][language]}}</span>
+    </div>    
+    
+    <div class="project-list">
+        <app-project
+            *ngFor="let project of projects"
+            [project] = "project"
+        >
+        <span>{{project["code"]}}</span>
+        </app-project>
+    </div>
+</div>
+

@@ -1,0 +1,23 @@
+app-project-selection-main .project-selection-container .title{
+    display: grid;
+    grid-template-columns: auto;
+    height: fit-content;
+    position: relative;
+    z-index: 1;
+    padding: 0 1rem;
+    h1{
+        color: map-get($color, orange);
+        -webkit-text-fill-color: map-get($color, orange);
+        font-weight: 500;
+        font-size: 3rem;
+        text-transform: uppercase;
+        line-height: 2.5rem;
+    }
+    span.details{
+        display: block;
+        font-size: 1.125rem;
+        font-weight: 200;
+        color: map-get($color, gray1);
+        -webkit-text-fill-color: map-get($color, gray1);
+    }
+}

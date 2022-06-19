@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import Exceptions from 'src/assets/common/exceptions/exceptions.json';
+import { Language } from '../../enums/Language';
 import { Exception } from '../../models/Exception';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Exception } from '../../models/Exception';
 export class ExceptionSrvService {
   constructor() { }
 
-  public getMessage(type:string, status:string, languageCode:string):Exception{
+  public getMessage(type:string, status:string, languageCode:Language):Exception{
     let exType = Exceptions[type];
     let ex = exType[status];
     let code = ex["code"];

@@ -19,7 +19,7 @@
         autocomplete="off" 
         spellcheck='false' 
         autocorrect='off'
-        placeholder="{{placeholder[languageCode]}}"
+        placeholder="{{placeholder[language]}}"
         autofocus
         #formFieldRef        
     />
@@ -35,7 +35,7 @@
         autocomplete="off" 
         spellcheck='false' 
         autocorrect='off'
-        placeholder="{{placeholder[languageCode]}}"
+        placeholder="{{placeholder[language]}}"
         autofocus
         #formFieldRef        
     />
@@ -43,7 +43,7 @@
         for="{{formField.name}}"
         *ngIf="formField.visible"
     >
-    {{label[languageCode]}}
+    {{label[language]}}
     </label>
 </div>
 <div class="validation">

@@ -1,0 +1,9 @@
+app-project-selection-main .project-selection-container .project-list{
+    display: grid;
+    grid-template-columns: auto;
+    background: #FFF;
+    height: fit-content;
+    min-height: 10vh;
+    padding: 1rem 0;
+    grid-row-gap: 1rem;
+}

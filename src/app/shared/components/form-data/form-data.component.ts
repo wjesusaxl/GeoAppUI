@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { Process } from '../../models/Process';
 import { ProcessResult } from '../../models/ProcessResult';
 import { ExceptionSrvService } from '../../services/exception/exception-srv.service';
+import { Language } from '../../enums/Language';
 
 @Component({
   selector: 'app-form-data',
@@ -35,7 +36,7 @@ export class FormDataComponent implements OnInit, OnDestroy {
   fgroup : FormGroup;
   formSubscription:Subscription;
   @Input() labels:any;
-  @Input() languageCode:string;
+  @Input() language:Language;
   
   constructor(
     private sanitizer: DomSanitizer, 
@@ -127,7 +128,7 @@ export class FormDataComponent implements OnInit, OnDestroy {
         this.excService.getMessage(
           processName,
           processCode,
-          "eng")["description"]
+          this.language)["description"]
       );
     }
     

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Language } from 'src/app/shared/enums/Language';
 import { FormField } from 'src/app/shared/models/FormField';
 
 @Component({
@@ -15,7 +16,7 @@ export class FormFieldComponent implements OnInit {
   @Input() showValMessage:boolean;
   @Input() label:any;
   @Input() placeholder:any;
-  @Input() languageCode:string;
+  @Input() language:Language;
   // @ViewChild("formFieldRef") formFieldRef:ElementRef  ;
 
   private innerValue: any = '';

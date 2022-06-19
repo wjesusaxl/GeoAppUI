@@ -1,0 +1,16 @@
+app-project-selection-main .project-selection-container .project-list app-project{
+    .overlay{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(220, 96, 22, 0);
+        transition: all .3s ease-in-out;
+        z-index: 2;
+    }
+    &:hover .overlay{
+        background: rgba(220, 96, 22, .5);
+        transition: all .3s ease-in-out;
+    }
+} 

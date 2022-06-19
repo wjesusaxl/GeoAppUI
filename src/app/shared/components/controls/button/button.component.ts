@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Language } from 'src/app/shared/enums/Language';
 import { FormButton } from 'src/app/shared/models/FormButton';
 import { FormSrvService } from 'src/app/shared/services/form/form-srv.service';
 
@@ -13,7 +14,7 @@ export class ButtonComponent implements OnInit {
   @Input() button:FormButton;
   @Input() label:any;
   @Input() title:any;
-  @Input() languageCode:string;
+  @Input() language:Language;
   constructor(private formService:FormSrvService) { }
 
   SendEvent(data:any){
