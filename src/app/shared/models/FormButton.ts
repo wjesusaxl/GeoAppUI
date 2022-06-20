@@ -9,5 +9,6 @@ export interface FormButton{
     icon?: Icon;
     safeContent? : string;
     process : Process;
+    type: string;
 }
 

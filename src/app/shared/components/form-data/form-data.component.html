@@ -9,8 +9,9 @@
       [label] = "labels[formField.label]"    
       [placeholder] = "labels[formField.placeholder]"
       [language] = "language"
-      *ngFor = "let formField of formFieldList"
-      [class.visible] = "formField.visible" 
+      *ngFor = "let formField of formFieldList; let first=first"      
+      [class.visible] = "formField.visible"
+      #fieldElement            
     >
     </app-form-field>
   </div>

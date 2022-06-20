@@ -34,10 +34,11 @@
         },
         "process":{
           "name": "get-form-content",
-            "args":{
-              "validateContent": true,
-              "action": "validate-user"
-            }
+          "args":{
+            "validateContent": true,
+            "action": "validate-user"
           }
+        },
+        "type": "submit"
     }]
   }

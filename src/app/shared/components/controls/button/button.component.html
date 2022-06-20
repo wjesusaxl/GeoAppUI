@@ -1,7 +1,8 @@
 <button 
-    class="{{button.class}}" 
-    title="{{title[language]}}"
-    (click)="SendEvent(button.process)"
+    class = "{{button.class}}" 
+    title = "{{title[language]}}"
+    (click) = "SendEvent(button.process)"
+    type =  {{button.type}}
 >
     <span>{{label[language]}}</span>
     <div 

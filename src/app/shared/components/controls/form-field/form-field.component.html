@@ -3,6 +3,7 @@
     [formGroup]="fgroup"
     [class.visible] = "formField.visible"
     [ngSwitch]="formField.type"
+    #inputElement
 >
     <div 
         class="icon 
@@ -21,7 +22,9 @@
         autocorrect='off'
         placeholder="{{placeholder[language]}}"
         autofocus
-        #formFieldRef        
+        #inputElement
+        class="x"
+        
     />
     <input 
         type="hidden" 
@@ -36,8 +39,7 @@
         spellcheck='false' 
         autocorrect='off'
         placeholder="{{placeholder[language]}}"
-        autofocus
-        #formFieldRef        
+        autofocus        
     />
     <label 
         for="{{formField.name}}"

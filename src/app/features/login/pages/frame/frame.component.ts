@@ -61,7 +61,7 @@ export class FrameComponent implements OnInit {
       // this.labels = Labels;
   }
 
-  public TriggerProcess(result:ProcessResult){
+  public TriggerProcess(result:ProcessResult){    
     try{
 
       if(!result.success)
@@ -98,6 +98,7 @@ export class FrameComponent implements OnInit {
             let username = data["username"];
             if(action == "validate-user"){
               this.validateUser(username);
+              this.formPassword.SetFocus1stElement();              
             }else if(action == "validate-user-password"){
               if(!("password" in data))
                 throw new Error("No password was provided.");
@@ -106,8 +107,6 @@ export class FrameComponent implements OnInit {
               this.validateUserPassword(username, password);
 
             }
-            
-            
             
           }
 
@@ -172,7 +171,6 @@ export class FrameComponent implements OnInit {
   public validateUserPassword(username:string, password:string){
     this.userService.ValidateUserPassword(username, password).subscribe((response:any)=>{
       if(!response["success"]){
-        console.log("home");
         this.router.navigate(['']);
       }else{
         this.formPassword.DisplayProcessMessage(

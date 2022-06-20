@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit, Output, ViewEncapsulation, EventEmitter, ViewChildren, ElementRef, QueryList, OnDestroy} from '@angular/core';
+import { Component, forwardRef, Input, OnInit, Output, ViewEncapsulation, EventEmitter, ViewChildren, ElementRef, QueryList, OnDestroy, ViewChild} from '@angular/core';
 import { FormData } from '../../models/FormData';
 import { FormField } from '../../models/FormField';
 import { FormButton } from '../../models/FormButton';
@@ -10,6 +10,7 @@ import { Process } from '../../models/Process';
 import { ProcessResult } from '../../models/ProcessResult';
 import { ExceptionSrvService } from '../../services/exception/exception-srv.service';
 import { Language } from '../../enums/Language';
+import { FormFieldComponent } from '../controls/form-field/form-field.component';
 
 @Component({
   selector: 'app-form-data',
@@ -37,11 +38,13 @@ export class FormDataComponent implements OnInit, OnDestroy {
   formSubscription:Subscription;
   @Input() labels:any;
   @Input() language:Language;
+  @ViewChild('fieldElement') fieldElement:FormFieldComponent;
   
   constructor(
     private sanitizer: DomSanitizer, 
     private formService:FormSrvService,
-    private excService:ExceptionSrvService) { }
+    private excService:ExceptionSrvService    
+  ) { }
 
   ngOnInit(): void {
     this.SetLists();
@@ -88,7 +91,12 @@ export class FormDataComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(form:any){
-    
+    console.log("submitting");
+  }
+
+  SetFocus1stElement(){    
+    console.log("Form Data", this.fieldElement);
+    this.fieldElement.SetFocus();
   }
 
 
