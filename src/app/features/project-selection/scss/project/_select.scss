@@ -1,0 +1,31 @@
+app-project-selection-main .project-selection-container .project-list app-project{
+    .select{
+        position: absolute;
+        right: 0;
+        top: 50%;        
+        
+        transition: all .3s ease-in-out;
+        transform: translate(-1rem, -50%);
+        z-index: 4;
+        height: 2rem;
+        opacity: 0;
+        .round{
+            fill: rgba(0, 0, 0, .5);
+        }
+        .arrow{
+            fill: map-get($color, orange);
+        }
+        svg{
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+        &:hover {
+            cursor: pointer;            
+        }
+    }
+    &:hover .select{            
+        opacity: 1;
+        transition: all .5s ease-in-out;
+    }
+} 

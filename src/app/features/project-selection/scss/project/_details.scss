@@ -11,13 +11,13 @@ app-project-selection-main .project-selection-container .project-list app-projec
         color: map-get($color, orange);
         -webkit-text-fill-color: map-get($color, orange);
         font-weight: 400;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         text-transform: uppercase;
     }
     span.code{
         color: #FFF;
         -webkit-text-fill-color: #FFF;
         font-weight: 300;
-        font-size: 1.125rem;
+        font-size: 1rem;
     }
 }

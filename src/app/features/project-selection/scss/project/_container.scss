@@ -5,8 +5,5 @@ app-project-selection-main .project-selection-container .project-list app-projec
     max-width: 30vw;
     position: relative;   
     overflow: hidden; 
-    align-items: end;    
-    &:hover{
-        cursor: pointer;
-    }
+    align-items: end;        
 }

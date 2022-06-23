@@ -7,6 +7,10 @@
         "eng": "Select one of the following projects:",
         "esp": "Selecciona uno de los siguientes proyectos:"
     },
+    "select-title":{
+        "eng": "Select",
+        "esp": "Seleccionar"
+    },
     "close-title":{
         "eng": "Close window",
         "esp": "Cerrar ventana"
