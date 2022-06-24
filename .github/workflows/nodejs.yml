@@ -45,7 +45,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.SSH_PORT }}
-        script: echo {{secrets.HOST}}
+        script: ls -la
 
   deploy-development:
     environment: Development
