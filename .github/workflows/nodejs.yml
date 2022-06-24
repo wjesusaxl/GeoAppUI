@@ -38,7 +38,7 @@ jobs:
             cd ..
             cd ..
             ls -la            
-            sudo sshpass -p ${{ secrets.PASSWORD }} scp -v -o StrictHostKeyChecking=no -r geo-app-ui.tar.gz wjesusaxl@45.79.199.115:/srv/http/GeoAppFE
+            sudo sshpass -p ${{ secrets.PASSWORD }} scp -v -o StrictHostKeyChecking=no -r geo-app-ui.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/srv/http/GeoAppFE
             
     - name: Uncompress new Files
       run : sudo sshpass -p ${{ secrets.PASSWORD }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'cd {{ secrets.TARGET }}/ && tar -xzvf compressed.tar.gz && rm compressed.tar.gz'
