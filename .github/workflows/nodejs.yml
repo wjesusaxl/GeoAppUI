@@ -28,7 +28,7 @@ jobs:
     - name: Build
       run: ng build --base-href "/geo-app-ui/"
 
-deploy-development:
+  deploy-development:
     environment: Development
     needs: build
     runs-on: ubuntu-latest
