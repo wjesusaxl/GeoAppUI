@@ -26,7 +26,7 @@ jobs:
       run: npm install
     
     - name: Build
-      run: ng build --base-href "/geo-app-ui/"
+      run: npm run build --base-href "/geo-app-ui/"
 
   deploy-development:
     environment: Development
