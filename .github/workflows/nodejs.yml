@@ -36,11 +36,11 @@ jobs:
 
     - name: Compress and Copy New Files to server
       run : |
-            cd dist/
-            tar -czvf ../../compressed.tar.gz ./
+            cd dist/geo-app-ui/
+            tar -czvf ../../geo-app-ui.tar.gz ./
             cd ..
             cd ..
-            sudo sshpass -p ${{ secrets.PASSWORD }} scp -v -o StrictHostKeyChecking=no -r compress.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:{{ secrets.TARGET }}
+            sudo sshpass -p ${{ secrets.PASSWORD }} scp -v -o StrictHostKeyChecking=no -r geo-app-ui.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:{{ secrets.TARGET }}
 
     - name: Uncompress new Files
       run : sudo sshpass -p ${{ secrets.PASSWORD }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'cd {{ secrets.TARGET }}/ && tar -xzvf compressed.tar.gz && rm compressed.tar.gz'
