@@ -28,9 +28,6 @@ jobs:
     - name: Build
       run: npm run build
 
-    - name: Listing
-      run: ls -la
-
     - name: Delete Existing Files
       run : sudo sshpass -p ${{ secrets.PASSWORD }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'rm -rf ${{ secrets.TARGET }}/*'
 
@@ -40,6 +37,7 @@ jobs:
             tar -czvf ../../geo-app-ui.tar.gz ./
             cd ..
             cd ..
+            ls -la
             sudo sshpass -p ${{ secrets.PASSWORD }} scp -v -o StrictHostKeyChecking=no -r geo-app-ui.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:{{ secrets.TARGET }}
 
     - name: Uncompress new Files
