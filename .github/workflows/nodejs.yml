@@ -31,9 +31,25 @@ jobs:
     - name: Build
       run: ng build --base-href "/geo-app-ui/"
 
+  validate-content:
+
+    needs: build
+    runs-on: ubuntu-latest
+    name: validate content
+    
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.SSH_PORT }}
+        script: ls -la
+
   deploy-development:
     environment: Development
-    needs: build
+    needs: validate-content
     runs-on: ubuntu-latest
     
     steps:
