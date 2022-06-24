@@ -22,8 +22,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
+    - name: Install NPM
       run: npm install
+    
+    - name: Build
       run: ng build --base-href "/geo-app-ui/"
 
 deploy-development:
