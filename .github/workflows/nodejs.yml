@@ -33,7 +33,7 @@ jobs:
 
   deploy-development:
     environment: Development
-    needs: validate-content
+    needs: build
     runs-on: ubuntu-latest
     
     steps:
