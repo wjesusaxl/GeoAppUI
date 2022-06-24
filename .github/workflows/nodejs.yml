@@ -45,7 +45,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.SSH_PORT }}
-        script: ls -la
+        script: ls -la >> content.txt
 
   deploy-development:
     environment: Development
@@ -60,6 +60,6 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.SSS_PORT }}
-        source: "dist/*"
+        port: ${{ secrets.SSH_PORT }}
+        source: "content.txt"
         target: ${{ secrets.TARGET }}
