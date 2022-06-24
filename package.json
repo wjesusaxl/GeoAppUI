@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o --host 0.0.0.0 --proxy-config proxy.conf.json",
-    "build": "ng build --prod --base-href '/geo-app-ui/'",
+    "build": "ng build --prod --base-href '/geo-app-ui'",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
