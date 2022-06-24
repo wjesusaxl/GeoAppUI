@@ -36,7 +36,7 @@ jobs:
 
     - name: Compress and Copy New Files to server
       run : |
-            cd dist/Viusasa/
+            cd dist/
             tar -czvf ../../compressed.tar.gz ./
             cd ..
             cd ..
