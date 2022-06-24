@@ -38,6 +38,7 @@ jobs:
             cd ..
             cd ..
             ls -la
+            echo "${{ secrets.PASSWORD }} - ${{ secrets.HOST }} - ${{ secrets.USERNAME }} -${{ secrets.TARGET }}"
             sudo sshpass -p ${{ secrets.PASSWORD }} scp -v -o StrictHostKeyChecking=no -r geo-app-ui.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:{{ secrets.TARGET }}
 
     - name: Uncompress new Files
