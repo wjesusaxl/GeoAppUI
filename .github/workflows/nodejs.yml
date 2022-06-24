@@ -24,9 +24,12 @@ jobs:
 
     - name: Install NPM
       run: npm install
+
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
     
     - name: Build
-      run: npm run build --base-href "/geo-app-ui/"
+      run: ng build --base-href "/geo-app-ui/"
 
   deploy-development:
     environment: Development
