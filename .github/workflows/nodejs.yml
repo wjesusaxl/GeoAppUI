@@ -42,5 +42,5 @@ jobs:
             sudo sshpass -p ${{ secrets.PASSWORD }} scp -v -o StrictHostKeyChecking=no -r geo-app-ui.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET }}
             
     - name: Uncompress new Files
-      run : sudo sshpass -p ${{ secrets.PASSWORD }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'cd ${{ secrets.TARGET }}/ && rm *.js *.css *.html && tar -xzvf geo-app-ui.tar.gz && rm geo-app-ui.tar.gz'
+      run : sudo sshpass -p ${{ secrets.PASSWORD }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'cd ${{ secrets.TARGET }}/ && rm -f *.js *.css *.html && tar -xzvf geo-app-ui.tar.gz && rm -f geo-app-ui.tar.gz'
 
