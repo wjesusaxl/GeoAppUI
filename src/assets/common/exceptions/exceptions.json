@@ -23,11 +23,18 @@
                 "esp": "Usuario no encontrado."
             }
         },
-        "103": {
+        "403": {
             "code": "wrong-password",
             "message": {
                 "eng": "Wrong password.",
                 "esp": "Contraseña incorrecta."
+            }
+        },
+        "423": {
+            "code": "user-not-active",
+            "message": {
+                "eng": "User is locked.",
+                "esp": "Usuario bloqueado."
             }
         },
         "500": {

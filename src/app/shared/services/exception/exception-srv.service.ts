@@ -10,6 +10,7 @@ export class ExceptionSrvService {
   constructor() { }
 
   public getMessage(type:string, status:string, languageCode:Language):Exception{
+    console.log([type, status, languageCode]);
     status = Number(status) === 0 ? "500" : status;
     let ex:Exception = {
       type: type,
@@ -17,7 +18,8 @@ export class ExceptionSrvService {
       code: "",
       status: status
     }    
-    try{      
+    try{
+      
       let exType = Exceptions[type];
       ex["code"] = exType[status]["code"];
       ex["description"] = exType[status]["message"][languageCode];

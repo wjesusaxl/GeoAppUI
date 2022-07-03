@@ -173,7 +173,7 @@ export class FrameComponent implements OnInit {
 
   public validateUserPassword(companyCode:string, email:string, password:string){
     this.userService.ValidateUser(companyCode, email, password).subscribe((response:any)=>{
-      if(!response["success"]){
+      if(response["success"]){
         this.router.navigate(['']);
       }else{
         this.formPassword.DisplayProcessMessage(

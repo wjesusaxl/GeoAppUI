@@ -91,7 +91,7 @@ export class FormDataComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(form:any){
-    console.log("submitting");
+    
   }
 
   SetFocus1stElement(){    
@@ -146,8 +146,7 @@ export class FormDataComponent implements OnInit, OnDestroy {
     this.validationMessage = message; 
   }
 
-  public SetValues(data:any){
-    console.log("Setting values", data);
+  public SetValues(data:any){    
     Object.keys(this.fgroup.controls).forEach(key => {      
       this.fgroup.controls[key].setValue(data[key]);
     });

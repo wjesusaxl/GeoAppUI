@@ -37,16 +37,17 @@ export class UserService {
           observer.next(result);
         },
         error(err){
+          console.log("Error", err);
           let result:ProcessResult = {
             process: {
               name: "user-validation"
             },
             success: false,
-            code: "",
-            message: ""
+            code: err["code"],
+            message: err["error"]["detail"]
           }
           try{
-            result["code"] = err["status"];
+            result["code"] = "code" in err["error"] ? err["error"]["code"] : err["status"];
             result["message"] = err["message"];
           }
           catch(ex){
