@@ -6,7 +6,7 @@
         "timeout": 3000
     },
     "/api/*":{
-        "target": "http://192.168.18.93",
+        "target": "https://dev-api.geoapp.solutions/",
         "secure": false,
         "logLevel": "debug",
         "timeout": 3000

@@ -62,9 +62,9 @@ export class FrameComponent implements OnInit {
   }
 
   public TriggerProcess(result:ProcessResult){    
-    try{
-
+    try{      
       if(!result.success)
+
         throw new Error(this.excService.getMessage(
           result["process"]["name"],
           result["code"],
@@ -86,25 +86,27 @@ export class FrameComponent implements OnInit {
           let action = args["action"];
 
           if(["validate-user", "validate-user-password"].includes(action)){
-
+            
             if(!("data" in result))
             throw new Error("No data");
-
+            
             let data = result["data"];
 
-            if(!("username" in data))
-              throw new Error("No user was provided.");
+            if(!("email" in data))
+              throw new Error("No email was provided.");
             
-            let username = data["username"];
+            let email = data["email"];
             if(action == "validate-user"){
-              this.validateUser(username);
-              this.formPassword.SetFocus1stElement();              
+
+              this.validateUser(email);
+              
             }else if(action == "validate-user-password"){
+              
               if(!("password" in data))
                 throw new Error("No password was provided.");
             
               let password = data["password"];
-              this.validateUserPassword(username, password);
+              this.validateUserPassword("", email, password);
 
             }
             
@@ -113,7 +115,7 @@ export class FrameComponent implements OnInit {
         }
 
       if(process["name"] == "switch-to-form"){      
-        this.setFormStatus(LoginForm.Username, [FormStatus.visible, FormStatus.active]);
+        this.setFormStatus(LoginForm.Email, [FormStatus.visible, FormStatus.active]);
         this.setFormStatus(LoginForm.Password, []);
         // this.formUsername.SetValues({
         //   username: ""
@@ -147,29 +149,30 @@ export class FrameComponent implements OnInit {
     
   }
 
-  public validateUser(username:string){
-    this.userService.ValidateUser(this.companyCode, username).subscribe((response:any)=>{
+  public validateUser(email:string){
+    this.userService.ValidateUser(this.companyCode, email).subscribe((response:any)=>{
       if(response["success"]){
-        this.setFormStatus(LoginForm.Username, [FormStatus.hidden]);
-        this.setFormStatus(LoginForm.Password, [FormStatus.active, FormStatus.visible]);
+        
+        this.setFormStatus(LoginForm.Email, [FormStatus.hidden]);
+        this.setFormStatus(LoginForm.Password, [FormStatus.active, FormStatus.visible]);        
         this.formPassword.SetValues({
-          username: username
+          email: email
         });
+        this.formPassword.SetFocus1stElement();
       }else{
-        this.formUsername.DisplayProcessMessage(
-          this.excService.getMessage(
-            response["process"]["name"],
-            response["code"],
-            this.language
-          )["description"]
-        );    
+        let message = this.excService.getMessage(
+          response["process"]["name"],
+          response["code"],
+          this.language
+        )["description"];
+        console.log("Message", message);
+        this.formUsername.DisplayProcessMessage(message);    
       }
     });
-
   }
 
-  public validateUserPassword(username:string, password:string){
-    this.userService.ValidateUserPassword(username, password).subscribe((response:any)=>{
+  public validateUserPassword(companyCode:string, email:string, password:string){
+    this.userService.ValidateUser(companyCode, email, password).subscribe((response:any)=>{
       if(!response["success"]){
         this.router.navigate(['']);
       }else{
@@ -233,8 +236,8 @@ export class FrameComponent implements OnInit {
       visible: formStatusList.includes(FormStatus.visible),
       inactive: formStatusList.includes(FormStatus.inactive)
     };
-
-    this.formUsernameClasses = loginForm == LoginForm.Username ? formClasses : this.formUsernameClasses;
+    
+    this.formUsernameClasses = loginForm == LoginForm.Email ? formClasses : this.formUsernameClasses;
     this.formPasswordClasses = loginForm == LoginForm.Password ? formClasses : this.formPasswordClasses;
   }
 

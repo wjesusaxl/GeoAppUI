@@ -95,7 +95,6 @@ export class FormDataComponent implements OnInit, OnDestroy {
   }
 
   SetFocus1stElement(){    
-    console.log("Form Data", this.fieldElement);
     this.fieldElement.SetFocus();
   }
 
@@ -148,6 +147,7 @@ export class FormDataComponent implements OnInit, OnDestroy {
   }
 
   public SetValues(data:any){
+    console.log("Setting values", data);
     Object.keys(this.fgroup.controls).forEach(key => {      
       this.fgroup.controls[key].setValue(data[key]);
     });

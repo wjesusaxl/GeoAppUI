@@ -3,14 +3,14 @@ app-form-data div.button-list app-button button{
     border: none;
     margin-left: auto;    
     align-items: center;  
-    padding: .5rem 0;    
-    width: 8rem;
+    padding: .5rem;    
+    width: fit-content;
+    min-width: 6rem;
     &:hover {
       cursor: pointer;
     }
     &.continue {
       margin-left: auto;
-      
     }
     &.back{
       margin-right: auto;     

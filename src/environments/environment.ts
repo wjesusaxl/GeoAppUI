@@ -2,9 +2,18 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// export const environment = {
+//   production: false,
+//   apiURL: "https://dev-api.geoapp.solutions",
+//   apiKey: "",
+//   envName: "dev",
+//   enableDebugTools: true,
+//   logLevel: 'debug'
+// };
+
 export const environment = {
   production: false,
-  apiURL: "/api/",
+  apiURL: "http://192.168.18.93:8000",
   apiKey: "",
   envName: "dev",
   enableDebugTools: true,

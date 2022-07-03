@@ -1,12 +1,12 @@
 {
     "controls": {
       "formFields": [{
-        "name": "username",
-        "label": "username",
+        "name": "email",
+        "label": "email",
         "defaultValue": "",
         "type": 1,
         "small": "",
-        "placeholder": "username-placeholder",
+        "placeholder": "email-placeholder",
         "icon": {
           "src": "",
           "class": "left-center", 
@@ -17,20 +17,20 @@
           "max": 30,
           "required": true,
           "minLength": 3,
-          "errorMessage": "Enter a valid username value."
+          "errorMessage": "Enter a valid email value."
         },
         "visible": true
       }]
     },
     "buttons": [{
         "name": "next",
-        "label": "username-continue",
+        "label": "email-continue",
         "class": "continue",
-        "title": "username-continue-title",
+        "title": "email-continue-title",
         "icon": {
           "src": "",
           "class": "continue",
-          "content": "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"continue\" viewBox=\"0 0 21.56 21.56\"><path d=\"M10.8,0C4.85-.01,.01,4.8,0,10.76c-.01,5.95,4.8,10.79,10.76,10.8s10.79-4.8,10.8-10.76v-.02C21.56,4.83,16.75,0,10.8,0h0m0,19.6c-4.95,.08-9.02-3.86-9.1-8.81h0C1.78,5.84,5.85,1.9,10.8,1.98h0c4.95-.08,9.02,3.86,9.1,8.81h0c-.08,4.95-4.15,8.89-9.1,8.81h0\"/><path d=\"M17.5,10.27c-.06-.12-.13-.23-.23-.32l-3.42-3.42c-.46-.44-1.19-.42-1.63,.03-.43,.44-.43,1.15,0,1.59l1.47,1.47H5.09c-.64,0-1.15,.51-1.15,1.15s.51,1.15,1.15,1.15H13.69l-1.47,1.47c-.44,.46-.42,1.19,.03,1.63,.44,.43,1.15,.43,1.59,0l3.37-3.37c.4-.34,.52-.91,.29-1.38\"/></svg>"
+          "content": ""
         },
         "process":{
           "name": "get-form-content",

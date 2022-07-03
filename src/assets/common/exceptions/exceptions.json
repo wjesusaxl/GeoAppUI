@@ -89,5 +89,14 @@
                 "esp": "Llena todo los campos requeridos."
             }
         }
+    },
+    "unknown": {
+        "500": {
+            "code": "unknown",
+            "message": {
+                "eng": "Unhandled error",
+                "esp": "Error desconocido"
+            }
+        }
     }
 }

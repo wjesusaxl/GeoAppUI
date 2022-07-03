@@ -7,19 +7,19 @@
         "eng": "Login",
         "esp": "Ingreso"
     },
-    "username": {
-        "eng": "username",
-        "esp": "usuario"
+    "email": {
+        "eng": "email",
+        "esp": "correo"
     },
-    "username-placeholder": {
-        "eng": "username",
-        "esp": "usuario"
+    "email-placeholder": {
+        "eng": "email",
+        "esp": "correo"
     },
-    "username-continue": {
+    "email-continue": {
         "eng": "Continue",
         "esp": "Continuar"
     },
-    "username-continue-title": {
+    "email-continue-title": {
         "eng": "Click to continue",
         "esp": "Hacer click para continuar"
     },
